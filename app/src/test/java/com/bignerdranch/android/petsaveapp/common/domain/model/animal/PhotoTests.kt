@@ -4,45 +4,48 @@ import org.junit.Assert
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
-private val mediumPhoto = "mediumPhoto"
-private val fullPhoto = "fullPhoto"
-private val invalidPhoto = "" // what's tested in Photo.isValidPhoto()
+class PhotoTests {
 
-@Test
-fun photo_getSmallestAvailablePhoto_hasMediumPhoto() {
-    // Given
-    val photo = Media.Photo(mediumPhoto, fullPhoto)
-    val expectedValue = mediumPhoto
+    private val mediumPhoto = "mediumPhoto"
+    private val fullPhoto = "fullPhoto"
+    private val invalidPhoto = "" // what's tested in Photo.isValidPhoto()
 
-    // When
-    val smallestPhoto = photo.getSmallestAvailablePhoto()
+    @Test
+    fun photo_getSmallestAvailablePhoto_hasMediumPhoto() {
+        // Given
+        val photo = Media.Photo(mediumPhoto, fullPhoto)
+        val expectedValue = mediumPhoto
 
-    // Then
-    Assert.assertEquals(smallestPhoto, expectedValue)
-}
+        // When
+        val smallestPhoto = photo.getSmallestAvailablePhoto()
 
-@Test
-fun photo_getSmallestAvailablePhoto_noMediumPhoto() {
-    // Given
-    val photo = Media.Photo(invalidPhoto, fullPhoto)
-    val expectedValue = fullPhoto
+        // Then
+        assertEquals(smallestPhoto, expectedValue)
+    }
 
-    // When
-    val smallestPhoto = photo.getSmallestAvailablePhoto()
+    @Test
+    fun photo_getSmallestAvailablePhoto_noMediumPhoto() {
+        // Given
+        val photo = Media.Photo(invalidPhoto, fullPhoto)
+        val expectedValue = fullPhoto
 
-    // Then
-    Assert.assertEquals(smallestPhoto, expectedValue)
-}
+        // When
+        val smallestPhoto = photo.getSmallestAvailablePhoto()
 
-@Test
-fun photo_getSmallestAvailablePhoto_noPhotos() {
-    // Given
-    val photo = Media.Photo(invalidPhoto, invalidPhoto)
-    val expectedValue = Media.Photo.EMPTY_PHOTO
+        // Then
+        assertEquals(smallestPhoto, expectedValue)
+    }
 
-    // When
-    val smallestPhoto = photo.getSmallestAvailablePhoto()
+    @Test
+    fun photo_getSmallestAvailablePhoto_noPhotos() {
+        // Given
+        val photo = Media.Photo(invalidPhoto, invalidPhoto)
+        val expectedValue = Media.Photo.EMPTY_PHOTO
 
-    // Then
-    assertEquals(smallestPhoto, expectedValue)
+        // When
+        val smallestPhoto = photo.getSmallestAvailablePhoto()
+
+        // Then
+        assertEquals(smallestPhoto, expectedValue)
+    }
 }
