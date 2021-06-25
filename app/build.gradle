@@ -74,6 +74,13 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
     androidTestImplementation "androidx.arch.core:core-testing:$androidx_core_testing_version"
 
+    // timber
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+// butter knife
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
     // TUTORIAL DEPENDENCIES HERE
 
 //    // Modules

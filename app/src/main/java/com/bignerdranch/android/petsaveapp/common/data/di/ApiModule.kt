@@ -3,6 +3,8 @@ package com.bignerdranch.android.petsaveapp.common.data.di
 import com.bignerdranch.android.petsaveapp.common.data.api.ApiConstants
 import com.bignerdranch.android.petsaveapp.common.data.api.PetFinderApi
 import com.bignerdranch.android.petsaveapp.common.data.api.interceptors.AuthenticationInterceptor
+import com.bignerdranch.android.petsaveapp.common.data.api.interceptors.LoggingInterceptor
+import com.bignerdranch.android.petsaveapp.common.data.api.interceptors.NetworkStatusInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
