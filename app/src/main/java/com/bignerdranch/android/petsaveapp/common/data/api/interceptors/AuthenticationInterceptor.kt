@@ -8,6 +8,7 @@ import com.bignerdranch.android.petsaveapp.common.data.api.ApiParameters.CLIENT_
 import com.bignerdranch.android.petsaveapp.common.data.api.ApiParameters.GRANT_TYPE_KEY
 import com.bignerdranch.android.petsaveapp.common.data.api.ApiParameters.GRANT_TYPE_VALUE
 import com.bignerdranch.android.petsaveapp.common.data.api.ApiParameters.TOKEN_TYPE
+import com.bignerdranch.android.petsaveapp.common.data.preferences.Preferences
 import com.squareup.moshi.Moshi
 import okhttp3.FormBody
 import okhttp3.Interceptor
