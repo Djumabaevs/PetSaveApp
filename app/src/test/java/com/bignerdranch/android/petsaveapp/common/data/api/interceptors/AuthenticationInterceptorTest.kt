@@ -5,7 +5,10 @@ import com.bignerdranch.android.petsaveapp.common.data.api.ApiConstants
 import com.bignerdranch.android.petsaveapp.common.data.preferences.Preferences
 import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockWebServer
+import org.junit.After
+import org.junit.Before
 import org.junit.runner.RunWith
+import org.mockito.Mockito
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 
@@ -23,5 +26,21 @@ class AuthenticationInterceptorTest {
     private val authEndpointPath = endpointSeparator + ApiConstants.AUTH_ENDPOINT
     private val validToken = "validToken"
     private val expiredToken = "expiredToken"
+
+    @Before
+    fun setup() {
+        preferences = Mockito.mock(Preferences::class.java)
+
+        mockWebServer = MockWebServer()
+        mockWebServer.start(8080)
+
+        authenticationInterceptor = AuthenticationInterceptor(preferences)
+        okHttpClient = OkHttpClient().newBuilder().addInterceptor(authenticationInterceptor).build()
+    }
+
+    @After
+    fun teardown() {
+        mockWebServer.shutdown()
+    }
 
 }
