@@ -92,21 +92,20 @@ class AuthenticationInterceptorTest {
 
     @Test
     fun authenticatorInterceptor_expiredToken() {
-
-        //Given
+        // Given
         `when`(preferences.getToken()).thenReturn(expiredToken)
         `when`(preferences.getTokenExpirationTime()).thenReturn(
             Instant.now().minusSeconds(3600).epochSecond
         )
+
         mockWebServer.dispatcher = getDispatcherForExpiredToken()
 
-        //When
-
+        // When
         okHttpClient.newCall(
             Request.Builder().url(mockWebServer.url(ApiConstants.ANIMALS_ENDPOINT)).build()
         ).execute()
 
-        //Then
+        // Then
         val tokenRequest = mockWebServer.takeRequest()
         val animalsRequest = mockWebServer.takeRequest()
 
@@ -114,10 +113,10 @@ class AuthenticationInterceptorTest {
             assertThat(method).isEqualTo("POST")
             assertThat(path).isEqualTo(authEndpointPath)
         }
+
         val inOrder = inOrder(preferences)
 
         inOrder.verify(preferences).getToken()
-
         inOrder.verify(preferences).putToken(validToken)
 
         verify(preferences, times(1)).getToken()
@@ -133,6 +132,9 @@ class AuthenticationInterceptorTest {
             assertThat(getHeader(ApiParameters.AUTH_HEADER)).isEqualTo(ApiParameters.TOKEN_TYPE + validToken)
         }
     }
+
+
+
 
     private fun getDispatcherForValidToken() = object : Dispatcher() {
         override fun dispatch(request: RecordedRequest): MockResponse {
