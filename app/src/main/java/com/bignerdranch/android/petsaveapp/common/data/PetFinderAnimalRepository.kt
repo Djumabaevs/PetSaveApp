@@ -18,11 +18,21 @@ class PetFinderAnimalRepository @Inject constructor(
     private val apiPaginationMapper: ApiPaginationMapper
 ): AnimalRepository {
     override fun getAnimals(): Flowable<List<Animal>> {
-        TODO("Not yet implemented")
+        return cache.getNearbyAnimals()
+            .distinctUntilChanged()
+            .map { animalList ->
+                animalList.map {
+                    it.animal.toAnimalDomain(
+                        it.photos,
+                        it.videos,
+                        it.tags
+                    )
+                }
+            }
     }
 
     override suspend fun requestMoreAnimals(pageToLoad: Int, numberOfItems: Int): PaginatedAnimals {
-        TODO("Not yet implemented")
+
     }
 
     override suspend fun storeAnimals(animals: List<AnimalWithDetails>) {
