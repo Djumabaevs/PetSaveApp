@@ -32,8 +32,22 @@ class PetFinderAnimalRepository @Inject constructor(
     }
 
     override suspend fun requestMoreAnimals(pageToLoad: Int, numberOfItems: Int): PaginatedAnimals {
-
+        val(apiAnimals, apiPagination) = api.getNearbyAnimals(
+            pageToLoad,
+            numberOfItems,
+            postcode,
+            maxDistanceMiles
+        )
+        return PaginatedAnimals(
+            apiAnimals?.map {
+                apiAnimalMapper.mapToDomain(it)
+            }.orEmpty(),
+            apiPaginationMapper.mapToDomain(apiPagination)
+        )
     }
+
+    private val postcode = "07097"
+    private val maxDistanceMiles = 100
 
     override suspend fun storeAnimals(animals: List<AnimalWithDetails>) {
         TODO("Not yet implemented")
