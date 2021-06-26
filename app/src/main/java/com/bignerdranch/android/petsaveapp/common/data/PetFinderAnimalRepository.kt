@@ -4,6 +4,8 @@ import com.bignerdranch.android.petsaveapp.common.data.api.PetFinderApi
 import com.bignerdranch.android.petsaveapp.common.data.api.model.mappers.ApiAnimalMapper
 import com.bignerdranch.android.petsaveapp.common.data.api.model.mappers.ApiPaginationMapper
 import com.bignerdranch.android.petsaveapp.common.data.cache.Cache
+import com.bignerdranch.android.petsaveapp.common.data.cache.model.cachedanimal.CachedAnimalAggregate
+import com.bignerdranch.android.petsaveapp.common.data.cache.model.cachedorganization.CachedOrganization
 import com.bignerdranch.android.petsaveapp.common.domain.model.animal.Animal
 import com.bignerdranch.android.petsaveapp.common.domain.model.animal.details.AnimalWithDetails
 import com.bignerdranch.android.petsaveapp.common.domain.model.pagination.PaginatedAnimals
@@ -50,6 +52,10 @@ class PetFinderAnimalRepository @Inject constructor(
     private val maxDistanceMiles = 100
 
     override suspend fun storeAnimals(animals: List<AnimalWithDetails>) {
-        TODO("Not yet implemented")
+        val organizations = animals.map {
+            CachedOrganization.fromDomain(it.details.organization)
+        }
+        cache.storeOrganizations(organizations)
+        cache.storeNearbyAnimals(animals.map { CachedAnimalAggregate.fromDomain(it) })
     }
 }
