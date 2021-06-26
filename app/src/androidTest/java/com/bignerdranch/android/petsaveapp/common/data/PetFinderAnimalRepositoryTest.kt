@@ -1,5 +1,6 @@
 package com.bignerdranch.android.petsaveapp.common.data
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.platform.app.InstrumentationRegistry
 import com.bignerdranch.android.petsaveapp.common.data.api.PetFinderApi
@@ -44,6 +45,9 @@ class PetFinderAnimalRepositoryTest {
 
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
+
+    @get:Rule
+    var instantTaskExecutorRule = InstantTaskExecutorRule()
 
     private lateinit var cache: Cache
 
@@ -93,13 +97,14 @@ class PetFinderAnimalRepositoryTest {
 
     @After
     fun tearDown() {
-    }
-
-    @Test
-    fun getAnimals() {
         fakeServer.shutdown()
     }
 
+  /*  @Test
+    fun getAnimals() {
+        fakeServer.shutdown()
+    }
+*/
     @Test
     fun requestMoreAnimals() = runBlocking {
         //Given
@@ -114,9 +119,33 @@ class PetFinderAnimalRepositoryTest {
         assertEquals(animal.id, expectedAnimalId)
     }
 
-    @Test
+   /* @Test
     fun storeAnimals() {
 
+    }*/
+
+    @Test
+    fun insertAnimals() {
+        //Given
+        val expectedAnimalId = 124L
+
+        runBlocking {
+            fakeServer.setHappyPathDispatcher()
+
+            val paginatedAnimals = repository.requestMoreAnimals(1, 100)
+            val animal = paginatedAnimals.animals.first()
+
+            //When
+            repository.storeAnimals(listOf(animal))
+        }
+            //Then
+        val testObserver = repository.getAnimals().test()
+
+        testObserver.assertNoErrors()
+        testObserver.assertNotComplete()
+        testObserver.assertValue {
+            it.first().id == expectedAnimalId
+        }
     }
 }
 
