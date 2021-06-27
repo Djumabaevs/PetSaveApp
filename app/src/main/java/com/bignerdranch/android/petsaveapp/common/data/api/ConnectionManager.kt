@@ -1,4 +1,4 @@
-package com.bignerdranch.android.petsaveapp.common.data.api.model
+package com.bignerdranch.android.petsaveapp.common.data.api
 
 import android.content.Context
 import android.net.ConnectivityManager

@@ -7,14 +7,37 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bignerdranch.android.logging.Logger
 import com.bignerdranch.android.petsaveapp.R
+import com.bignerdranch.android.petsaveapp.animalsnearyou.domain.usecases.GetAnimals
+import com.bignerdranch.android.petsaveapp.animalsnearyou.domain.usecases.RequestNextPageOfAnimals
+import com.bignerdranch.android.petsaveapp.common.domain.model.NetworkException
+import com.bignerdranch.android.petsaveapp.common.domain.model.NetworkUnavailableException
+import com.bignerdranch.android.petsaveapp.common.domain.model.NoMoreAnimalsException
+import com.bignerdranch.android.petsaveapp.common.domain.model.animal.Animal
+import com.bignerdranch.android.petsaveapp.common.domain.model.pagination.Pagination
 import com.bignerdranch.android.petsaveapp.common.presentation.AnimalsAdapter
 import com.bignerdranch.android.petsaveapp.common.presentation.Event
+import com.bignerdranch.android.petsaveapp.common.presentation.model.mappers.UiAnimalMapper
+import com.bignerdranch.android.petsaveapp.common.utils.DispatchersProvider
+import com.bignerdranch.android.petsaveapp.common.utils.createExceptionHandler
 import com.bignerdranch.android.petsaveapp.databinding.FragmentAnimalsNearYouBinding
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.lifecycle.HiltViewModel
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class AnimalsNearYouFragment : Fragment() {

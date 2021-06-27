@@ -109,7 +109,7 @@ class AuthenticationInterceptor @Inject constructor(
         with(preferences) {
             putTokenType(apiToken.tokenType!!)
             putTokenExpirationTime(apiToken.expiresAt)
-                putToken(apiToken.accessToken!!)
+            putToken(apiToken.accessToken!!)
         }
     }
 }

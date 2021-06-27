@@ -1,6 +1,6 @@
 package com.bignerdranch.android.petsaveapp.common.data.api.interceptors
 
-import com.bignerdranch.android.petsaveapp.common.data.api.model.ConnectionManager
+import com.bignerdranch.android.petsaveapp.common.data.api.ConnectionManager
 import com.bignerdranch.android.petsaveapp.common.domain.model.NetworkUnavailableException
 import okhttp3.Interceptor
 import okhttp3.Response

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.bignerdranch.android.logging.Logger
 import com.bignerdranch.android.petsaveapp.animalsnearyou.domain.usecases.GetAnimals
 import com.bignerdranch.android.petsaveapp.animalsnearyou.domain.usecases.RequestNextPageOfAnimals
 import com.bignerdranch.android.petsaveapp.common.domain.model.NetworkException
