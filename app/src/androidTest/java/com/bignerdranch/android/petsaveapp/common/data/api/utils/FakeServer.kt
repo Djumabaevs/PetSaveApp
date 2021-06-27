@@ -1,7 +1,6 @@
 package com.bignerdranch.android.petsaveapp.common.data.api.utils
 
 import androidx.test.platform.app.InstrumentationRegistry
-import com.bignerdranch.android.petsaveapp.Logger
 import com.bignerdranch.android.petsaveapp.common.data.api.ApiConstants
 import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse

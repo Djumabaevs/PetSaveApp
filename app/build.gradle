@@ -104,8 +104,8 @@ dependencies {
 
     // TUTORIAL DEPENDENCIES HERE
 
-//  // Modules
-//  implementation project(":logging")
+    // Modules
+    implementation project(":logging")
 
     // Network
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"

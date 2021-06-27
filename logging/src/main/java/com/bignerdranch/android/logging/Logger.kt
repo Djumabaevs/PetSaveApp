@@ -1,6 +1,8 @@
-package com.bignerdranch.android.petsaveapp
+package com.bignerdranch.android.logging
 
+import com.debug.android.logging.TimberLogging
 import timber.log.Timber
+
 
 object Logger {
     private val logger by lazy {

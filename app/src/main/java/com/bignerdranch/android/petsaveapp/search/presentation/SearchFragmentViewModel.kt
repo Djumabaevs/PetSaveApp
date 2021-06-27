@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bignerdranch.android.petsaveapp.Logger
 import com.bignerdranch.android.petsaveapp.common.domain.model.NoMoreAnimalsException
 import com.bignerdranch.android.petsaveapp.common.domain.model.animal.Animal
 import com.bignerdranch.android.petsaveapp.common.domain.model.pagination.Pagination

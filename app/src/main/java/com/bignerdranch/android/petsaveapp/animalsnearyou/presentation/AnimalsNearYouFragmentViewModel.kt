@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bignerdranch.android.petsaveapp.Logger
 import com.bignerdranch.android.petsaveapp.animalsnearyou.domain.usecases.GetAnimals
 import com.bignerdranch.android.petsaveapp.animalsnearyou.domain.usecases.RequestNextPageOfAnimals
 import com.bignerdranch.android.petsaveapp.common.domain.model.NetworkException
@@ -16,7 +15,6 @@ import com.bignerdranch.android.petsaveapp.common.presentation.Event
 import com.bignerdranch.android.petsaveapp.common.presentation.model.mappers.UiAnimalMapper
 import com.bignerdranch.android.petsaveapp.common.utils.DispatchersProvider
 import com.bignerdranch.android.petsaveapp.common.utils.createExceptionHandler
-import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo

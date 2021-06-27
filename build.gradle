@@ -1,31 +1,31 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+
 buildscript {
 
     ext {
-        kotlin_version = '1.4.32'
-        compileSdkVersion = 30
+        kotlin_version = '1.4.20'
+        compileSdkVersion = 29
         targetSdkVersion = compileSdkVersion
-        minSdkVersion = 28
+        minSdkVersion = 23
 
-
+        // Tutorial dependency versions
         appcompat_version = "1.2.0"
         constraint_layout_version = "2.0.4"
-        junit_version = "4.13.1"
+        junit_version = "4.13"
         google_truth_version = "1.0"
         mockito_version = "3.5.15"
         mockwebserver_version = "4.9.0"
         robolectric_version = "4.4"
         androidx_junit_version = "1.1.2"
         androidx_core_testing_version = "2.1.0"
+        coroutines_test_version = "1.4.2"
         espresso_version = "3.3.0"
         fragment_testing_version = "1.2.5"
-        coroutines_test_version = "1.4.2"
         room_version = "2.2.5"
         rxjava_version = "2.2.19"
         rxkotlin_version = "2.4.0"
         rxandroid_version = "2.1.1"
         hilt_version = "2.33-beta"
-        androidx_hilt_version = "1.0.0-alpha02"
         nav_version = "2.3.1"
         retrofit_version = "2.9.0"
         okHttp_version = "4.9.0"
@@ -38,22 +38,22 @@ buildscript {
         leakcanary_version = "2.4"
     }
 
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
-        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
-        classpath "com.android.tools.build:gradle:4.1.0"
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-    }
-
     repositories {
         google()
         jcenter()
     }
-}
 
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.1.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
+
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
 
 allprojects {
     repositories {
