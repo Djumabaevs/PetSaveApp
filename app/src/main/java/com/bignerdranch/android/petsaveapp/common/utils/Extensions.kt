@@ -2,6 +2,7 @@ package com.bignerdranch.android.petsaveapp.common.utils
 
 import android.widget.ImageView
 import androidx.lifecycle.viewModelScope
+import com.bignerdranch.android.logging.Logger
 import com.bignerdranch.android.petsaveapp.R
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions

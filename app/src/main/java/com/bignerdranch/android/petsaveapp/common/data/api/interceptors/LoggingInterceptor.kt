@@ -1,5 +1,6 @@
 package com.bignerdranch.android.petsaveapp.common.data.api.interceptors
 
+import com.bignerdranch.android.logging.Logger
 import okhttp3.logging.HttpLoggingInterceptor
 import javax.inject.Inject
 
