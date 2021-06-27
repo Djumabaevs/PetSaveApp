@@ -16,7 +16,6 @@ import com.bignerdranch.android.petsaveapp.databinding.FragmentAnimalsNearYouBin
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class AnimalsNearYouFragment : Fragment() {
 

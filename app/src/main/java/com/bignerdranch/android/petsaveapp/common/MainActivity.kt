@@ -1,7 +1,5 @@
-package com.bignerdranch.android.petsaveapp.common
-
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -21,8 +19,10 @@ class MainActivity : AppCompatActivity() {
         AppBarConfiguration(topLevelDestinationIds = setOf(R.id.animalsNearYou, R.id.search))
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Switch to AppTheme for displaying the activity
+        setTheme(R.style.AppTheme)
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -41,7 +41,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupBottomNav() {
-        binding.bottomNavigation.setupWithNavController(navController)
+        binding.bottomNavigationId.setupWithNavController(navController)
     }
-
-    }
+}

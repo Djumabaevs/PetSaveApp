@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.petsaveapp.common.presentation.model.UIAnimal
+import com.bignerdranch.android.petsaveapp.common.utils.setImage
 import com.bignerdranch.android.petsaveapp.databinding.RecyclerViewAnimalItemBinding
 
 class AnimalsAdapter: ListAdapter<UIAnimal, AnimalsAdapter.AnimalsViewHolder>(ITEM_COMPARATOR) {
@@ -29,7 +30,7 @@ class AnimalsAdapter: ListAdapter<UIAnimal, AnimalsAdapter.AnimalsViewHolder>(IT
 
         fun bind(item: UIAnimal) {
             binding.name.text = item.name
-        //    binding.photo.setImage(item.photo)
+            binding.photo.setImage(item.photo)
         }
     }
 }
