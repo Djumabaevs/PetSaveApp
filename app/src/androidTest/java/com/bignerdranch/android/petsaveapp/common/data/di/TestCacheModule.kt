@@ -2,6 +2,11 @@ package com.bignerdranch.android.petsaveapp.common.data.di
 
 import androidx.room.Room
 import androidx.test.platform.app.InstrumentationRegistry
+import com.bignerdranch.android.petsaveapp.common.data.cache.Cache
+import com.bignerdranch.android.petsaveapp.common.data.cache.PetSaveDatabase
+import com.bignerdranch.android.petsaveapp.common.data.cache.RoomCache
+import com.bignerdranch.android.petsaveapp.common.data.cache.daos.AnimalsDao
+import com.bignerdranch.android.petsaveapp.common.data.cache.daos.OrganizationsDao
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
