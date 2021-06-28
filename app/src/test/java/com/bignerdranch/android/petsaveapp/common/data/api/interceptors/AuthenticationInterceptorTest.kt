@@ -24,7 +24,7 @@ import org.robolectric.annotation.Config
 import org.threeten.bp.Instant
 
 @RunWith(RobolectricTestRunner::class)
-@Config(manifest = Config.NONE, sdk = [Build.VERSION_CODES.P])
+@Config(manifest=Config.NONE, sdk = [Build.VERSION_CODES.P])
 class AuthenticationInterceptorTest {
 
     private lateinit var preferences: Preferences
@@ -40,7 +40,7 @@ class AuthenticationInterceptorTest {
 
     @Before
     fun setup() {
-        preferences = Mockito.mock(Preferences::class.java)
+        preferences = mock(Preferences::class.java)
 
         mockWebServer = MockWebServer()
         mockWebServer.start(8080)
@@ -56,38 +56,27 @@ class AuthenticationInterceptorTest {
 
     @Test
     fun authenticationInterceptor_validToken() {
-
-
         //Given
-
         `when`(preferences.getToken()).thenReturn(validToken)
         `when`(preferences.getTokenExpirationTime()).thenReturn(
-            Instant.now().plusSeconds(3600).epochSecond
+                Instant.now().plusSeconds(3600).epochSecond
         )
 
         mockWebServer.dispatcher = getDispatcherForValidToken()
 
-        //When
-
+        // When
         okHttpClient.newCall(
-            Request.Builder().url(mockWebServer.url(ApiConstants.ANIMALS_ENDPOINT)).build()
+                Request.Builder().url(mockWebServer.url(ApiConstants.ANIMALS_ENDPOINT)).build()
         ).execute()
 
-
-        //Then
-
+        // Then
         val request = mockWebServer.takeRequest()
 
         with(request) {
-
             assertThat(method).isEqualTo("GET")
             assertThat(path).isEqualTo(animalsEndpointPath)
-            assertThat(getHeader(ApiParameters.AUTH_HEADER)).isEqualTo(
-                ApiParameters.TOKEN_TYPE + validToken
-            )
-
+            assertThat(getHeader(ApiParameters.AUTH_HEADER)).isEqualTo(ApiParameters.TOKEN_TYPE + validToken)
         }
-
     }
 
     @Test
@@ -95,14 +84,14 @@ class AuthenticationInterceptorTest {
         // Given
         `when`(preferences.getToken()).thenReturn(expiredToken)
         `when`(preferences.getTokenExpirationTime()).thenReturn(
-            Instant.now().minusSeconds(3600).epochSecond
+                Instant.now().minusSeconds(3600).epochSecond
         )
 
         mockWebServer.dispatcher = getDispatcherForExpiredToken()
 
         // When
         okHttpClient.newCall(
-            Request.Builder().url(mockWebServer.url(ApiConstants.ANIMALS_ENDPOINT)).build()
+                Request.Builder().url(mockWebServer.url(ApiConstants.ANIMALS_ENDPOINT)).build()
         ).execute()
 
         // Then
@@ -132,9 +121,6 @@ class AuthenticationInterceptorTest {
             assertThat(getHeader(ApiParameters.AUTH_HEADER)).isEqualTo(ApiParameters.TOKEN_TYPE + validToken)
         }
     }
-
-
-
 
     private fun getDispatcherForValidToken() = object : Dispatcher() {
         override fun dispatch(request: RecordedRequest): MockResponse {

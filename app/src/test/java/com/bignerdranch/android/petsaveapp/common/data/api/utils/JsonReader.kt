@@ -1,6 +1,7 @@
 package com.bignerdranch.android.petsaveapp.common.data.api.utils
 
 import androidx.test.platform.app.InstrumentationRegistry
+import com.bignerdranch.android.logging.Logger
 import java.io.IOException
 import java.io.InputStream
 
