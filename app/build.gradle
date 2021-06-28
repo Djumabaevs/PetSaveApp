@@ -9,15 +9,15 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.bignerdranch.android.petsaveapp"
+        applicationId "com.raywenderlich.android.petsave"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "com.bignerdranch.android.petsaveapp.HiltTestRunner"
+        testInstrumentationRunner "com.raywenderlich.android.petsave.HiltTestRunner"
 
         javaCompileOptions {
             annotationProcessorOptions {
