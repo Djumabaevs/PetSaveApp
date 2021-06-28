@@ -1,0 +1,11 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.bignerdranch.android.petsaveapp">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application android:usesCleartextTraffic="true">
+        <activity
+            android:name="com.debug.android.petsaveapp.HiltTestActivity"
+            android:exported="false" />
+    </application>
+
+</manifest>
