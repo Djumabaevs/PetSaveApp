@@ -17,6 +17,7 @@ data class SearchViewState(
             ageFilterValues = Event(ages),
             typeFilterValues = Event(types)
         )
+
     }
 
     fun updateToNoSearchQuery(): SearchViewState {
