@@ -9,7 +9,7 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
+    compileSdkVersion 29
 
     defaultConfig {
         applicationId "com.bignerdranch.android.petsaveapp"

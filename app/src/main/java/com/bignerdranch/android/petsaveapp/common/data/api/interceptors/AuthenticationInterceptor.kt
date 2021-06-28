@@ -19,7 +19,7 @@ import org.threeten.bp.Instant
 import javax.inject.Inject
 
 class AuthenticationInterceptor @Inject constructor(
-    private val preferences: Preferences
+        private val preferences: Preferences
 ): Interceptor {
 
     companion object {
@@ -61,28 +61,28 @@ class AuthenticationInterceptor @Inject constructor(
 
     private fun Interceptor.Chain.createAuthenticatedRequest(token: String): Request {
         return request()
-            .newBuilder()
-            .addHeader(AUTH_HEADER, TOKEN_TYPE + token)
-            .build()
+                .newBuilder()
+                .addHeader(AUTH_HEADER, TOKEN_TYPE + token)
+                .build()
     }
 
     private fun Interceptor.Chain.refreshToken(): Response {
         val url = request()
-            .url
-            .newBuilder(AUTH_ENDPOINT)!!
-            .build()
+                .url
+                .newBuilder(AUTH_ENDPOINT)!!
+                .build()
 
         val body = FormBody.Builder()
-            .add(GRANT_TYPE_KEY, GRANT_TYPE_VALUE)
-            .add(CLIENT_ID, ApiConstants.KEY)
-            .add(CLIENT_SECRET, ApiConstants.SECRET)
-            .build()
+                .add(GRANT_TYPE_KEY, GRANT_TYPE_VALUE)
+                .add(CLIENT_ID, ApiConstants.KEY)
+                .add(CLIENT_SECRET, ApiConstants.SECRET)
+                .build()
 
         val tokenRefresh = request()
-            .newBuilder()
-            .post(body)
-            .url(url)
-            .build()
+                .newBuilder()
+                .post(body)
+                .url(url)
+                .build()
 
         return proceedDeletingTokenIfUnauthorized(tokenRefresh)
     }
