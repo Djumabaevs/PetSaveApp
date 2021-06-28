@@ -1,4 +1,4 @@
-package com.debug.android.petsaveapp
+package com.bignerdranch.android.petsaveapp
 
 import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
