@@ -6,6 +6,7 @@ import com.bignerdranch.android.petsaveapp.common.data.PetFinderAnimalRepository
 import com.bignerdranch.android.petsaveapp.common.domain.repositories.AnimalRepository
 import com.bignerdranch.android.petsaveapp.common.utils.CoroutineDispatchersProvider
 import com.bignerdranch.android.petsaveapp.common.utils.DispatchersProvider
+import com.djumabaevs.sharing.presentation.SharingFragmentViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.Reusable

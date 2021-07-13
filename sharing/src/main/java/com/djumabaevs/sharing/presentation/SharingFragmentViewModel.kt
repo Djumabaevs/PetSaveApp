@@ -2,9 +2,7 @@ package com.djumabaevs.sharing.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.raywenderlich.android.petsave.common.domain.usecases.GetAnimalDetails
-import com.raywenderlich.android.petsave.common.utils.DispatchersProvider
-import com.raywenderlich.android.petsave.sharing.presentation.model.mappers.UiAnimalToShareMapper
+import com.bignerdranch.android.petsaveapp.common.utils.DispatchersProvider
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch

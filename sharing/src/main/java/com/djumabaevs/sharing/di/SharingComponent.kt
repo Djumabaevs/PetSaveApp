@@ -1,6 +1,7 @@
 package com.djumabaevs.sharing.di
 
 import android.content.Context
+import com.djumabaevs.sharing.presentation.SharingFragment
 import dagger.BindsInstance
 import dagger.Component
 
