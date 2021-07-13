@@ -2,11 +2,10 @@ package com.djumabaevs.sharing.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.raywenderlich.android.petsave.common.data.PetFinderAnimalRepository
-import com.raywenderlich.android.petsave.common.domain.repositories.AnimalRepository
-import com.raywenderlich.android.petsave.common.utils.CoroutineDispatchersProvider
-import com.raywenderlich.android.petsave.common.utils.DispatchersProvider
-import com.raywenderlich.android.petsave.sharing.presentation.SharingFragmentViewModel
+import com.bignerdranch.android.petsaveapp.common.data.PetFinderAnimalRepository
+import com.bignerdranch.android.petsaveapp.common.domain.repositories.AnimalRepository
+import com.bignerdranch.android.petsaveapp.common.utils.CoroutineDispatchersProvider
+import com.bignerdranch.android.petsaveapp.common.utils.DispatchersProvider
 import dagger.Binds
 import dagger.Module
 import dagger.Reusable
