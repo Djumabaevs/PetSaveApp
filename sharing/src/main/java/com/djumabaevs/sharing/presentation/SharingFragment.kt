@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.bignerdranch.android.petsaveapp.common.di.SharingModuleDependencies
 import com.bignerdranch.android.petsaveapp.common.utils.setImage
 import com.djumabaevs.sharing.databinding.FragmentSharingBinding
 import com.djumabaevs.sharing.di.ViewModelFactory
+import com.djumabaevs.sharing.di.DaggerSharingComponent
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.EntryPointAccessors
 import kotlinx.coroutines.flow.collect

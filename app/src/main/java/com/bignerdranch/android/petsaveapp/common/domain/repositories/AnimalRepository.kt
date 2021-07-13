@@ -13,6 +13,7 @@ interface AnimalRepository {
     suspend fun requestMoreAnimals(pageToLoad: Int, numberOfItems: Int): PaginatedAnimals
     suspend fun storeAnimals(animals: List<AnimalWithDetails>)
     suspend fun getAnimalTypes(): List<String>
+    suspend fun getAnimal(animalId: Long): AnimalWithDetails
     fun getAnimalAges(): List<Age>
     fun searchCachedAnimalsBy(searchParameters: SearchParameters): Flowable<SearchResults>
     suspend fun searchAnimalsRemotely(

@@ -2,6 +2,7 @@ package com.bignerdranch.android.petsaveapp.common.domain.model.animal.details
 
 import com.bignerdranch.android.petsaveapp.common.domain.model.animal.AdoptionStatus
 import com.bignerdranch.android.petsaveapp.common.domain.model.animal.Media
+import com.bignerdranch.android.petsaveapp.common.domain.model.organization.Organization
 import org.threeten.bp.LocalDateTime
 
 data class AnimalWithDetails(
@@ -14,3 +15,7 @@ data class AnimalWithDetails(
     val adoptionStatus: AdoptionStatus,
     val publishedAt: LocalDateTime
 )
+{
+    val description: String = details.description
+    val organizationContact: Organization.Contact = details.organizationContact
+}

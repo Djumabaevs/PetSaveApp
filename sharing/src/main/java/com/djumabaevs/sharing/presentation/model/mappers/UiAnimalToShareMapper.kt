@@ -1,8 +1,9 @@
 package com.djumabaevs.sharing.presentation.model.mappers
 
-import com.raywenderlich.android.petsave.common.domain.model.animal.details.AnimalWithDetails
-import com.raywenderlich.android.petsave.common.presentation.model.mappers.UiMapper
-import com.raywenderlich.android.petsave.sharing.presentation.model.UIAnimalToShare
+
+import com.bignerdranch.android.petsaveapp.common.domain.model.animal.details.AnimalWithDetails
+import com.bignerdranch.android.petsaveapp.common.presentation.model.mappers.UiMapper
+import com.djumabaevs.sharing.presentation.model.UIAnimalToShare
 import javax.inject.Inject
 
 class UiAnimalToShareMapper @Inject constructor(): UiMapper<AnimalWithDetails, UIAnimalToShare> {
