@@ -73,8 +73,16 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    //Modules
+    // Modules
+    implementation project(":logging")
+    implementation project(":sharing")
+//    api project(":sharing")
+//    api project(":logging")
+
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_android_version"
 
     // Support Libraries
     implementation "androidx.appcompat:appcompat:$appcompat_version"
@@ -104,10 +112,7 @@ dependencies {
         exclude group: 'androidx.test', module: 'monitor'
     }
 
-    // TUTORIAL DEPENDENCIES HERE
 
-    // Modules
-    implementation project(":logging")
 
     // Network
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
