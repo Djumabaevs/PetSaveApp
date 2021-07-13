@@ -148,18 +148,3 @@ class PetFinderAnimalRepositoryTest {
         }
     }
 }
-
-@Module
-@InstallIn(SingletonComponent::class)
-object TestCacheModule {
-
-    @Provides
-    fun provideRoomDatabase(): PetSaveDatabase {
-        return Room.inMemoryDatabaseBuilder(
-            InstrumentationRegistry.getInstrumentation().context,
-            PetSaveDatabase::class.java
-        )
-            .allowMainThreadQueries()
-            .build()
-    }
-}

@@ -1,6 +1,5 @@
 package com.bignerdranch.android.logging
 
-import com.debug.android.logging.TimberLogging
 import timber.log.Timber
 
 

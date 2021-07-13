@@ -16,7 +16,6 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".HiltTestActivity"></activity>
         <activity
             android:name=".common.MainActivity"
             android:theme="@style/SplashTheme">

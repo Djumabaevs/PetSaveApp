@@ -8,7 +8,6 @@ import dagger.hilt.android.HiltAndroidApp
 @HiltAndroidApp
 class PetSaveApplication: Application() {
 
-    // initiate analytics, crashlytics, etc
 
     override fun onCreate() {
         super.onCreate()
