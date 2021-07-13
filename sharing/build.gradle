@@ -38,6 +38,12 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$hilt_version"
     implementation "com.google.dagger:dagger:$dagger_version"
 
+    implementation "com.google.android.material:material:$material_version"
+
+    // Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
 }

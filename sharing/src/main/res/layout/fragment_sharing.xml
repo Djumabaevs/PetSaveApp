@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:text="@string/share_headline_label"
         style="@style/TextAppearance.MaterialComponents.Headline5"
-        android:layout_marginTop="@dimen/large_margin"
+        android:layout_marginTop="44dp"
         android:layout_marginStart="@dimen/default_margin"
         android:layout_marginEnd="@dimen/default_margin"
         android:layout_marginBottom="@dimen/default_margin"
