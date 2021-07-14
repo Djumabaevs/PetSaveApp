@@ -67,7 +67,7 @@ android {
         exclude 'META-INF/LGPL2.1'
     }
 
-    dynamicFeatures = [":sharing"]
+    dynamicFeatures = [":sharing", ':dynamicfeature']
 }
 
 dependencies {

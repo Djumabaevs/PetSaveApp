@@ -41,4 +41,5 @@
     <string name="share_on_facebook_checkbox_label">Share on Facebook</string>
     <string name="share_on_twitter_checkbox_label">Share on Twitter</string>
     <string name="share_on_myspace_checkbox_label">Share on Myspace</string>
+    <string name="title_dynamicfeature">MyDynamic</string>
 </resources>
