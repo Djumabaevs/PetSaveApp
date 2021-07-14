@@ -156,6 +156,13 @@ dependencies {
 
     // Utils
     implementation "com.jakewharton.threetenabp:threetenabp:$threetenabp_version"
+    implementation 'com.squareup.retrofit2:converter-simplexml:2.7.1'
 
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakcanary_version"
+
+    // Security
+    implementation 'androidx.biometric:biometric:1.0.1'
+    implementation "androidx.security:security-crypto:$security_version"
+    implementation "com.babylon.certificatetransparency:certificatetransparency-android:$babylonhealth_version"
+    implementation 'com.google.firebase:firebase-messaging:20.2.0'
 }

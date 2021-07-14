@@ -11,4 +11,10 @@
       android:icon="@drawable/ic_search_24dp"
       android:title="@string/search"
       app:showAsAction="ifRoom" />
+
+  <item
+      android:id="@+id/report"
+      android:icon="@drawable/ic_baseline_report_problem_24"
+      android:title="@string/report"
+      app:showAsAction="ifRoom" />
 </menu>

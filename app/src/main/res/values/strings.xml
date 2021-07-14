@@ -42,4 +42,13 @@
     <string name="share_on_twitter_checkbox_label">Share on Twitter</string>
     <string name="share_on_myspace_checkbox_label">Share on Myspace</string>
     <string name="title_dynamicfeature">MyDynamic</string>
+    <string name="category">Category</string>
+    <string name="email">Email</string>
+    <string name="login">Login</string>
+    <string name="report_details">Report Details</string>
+    <string name="send_report">Send Report</string>
+    <string name="signup">Sign up</string>
+    <string name="report_screen_label">Report a concern</string>
+    <string name="report">Report</string>
+    <string name="upload_photo">Upload Photo</string>
 </resources>

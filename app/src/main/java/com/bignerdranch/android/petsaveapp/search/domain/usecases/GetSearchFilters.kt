@@ -1,32 +1,35 @@
 package com.bignerdranch.android.petsaveapp.search.domain.usecases
 
-import com.bignerdranch.android.petsaveapp.common.domain.model.animal.details.Age
-import com.bignerdranch.android.petsaveapp.common.domain.repositories.AnimalRepository
-import com.bignerdranch.android.petsaveapp.search.domain.model.SearchFilters
-import java.util.*
-import javax.inject.Inject
 
-class GetSearchFilters @Inject constructor(private val animalRepository: AnimalRepository) {
+class GetSearchFilters @Inject constructor(
+  private val animalRepository: AnimalRepository
+) {
 
-    companion object {
-        const val NO_FILTER_SELECTED = "Any"
+  companion object {
+    private const val DEFAULT_VALUE = "Any"
+    private const val DEFAULT_VALUE_LOWERCASE = "any"
+  }
+
+  suspend operator fun invoke(): SearchFilters {
+    val types = animalRepository.getAnimalTypes()
+
+    val filteringTypes = if (types.any { it.toLowerCase(Locale.ROOT) == DEFAULT_VALUE_LOWERCASE }) {
+      types
+    } else {
+      listOf(DEFAULT_VALUE) + types
     }
 
-    suspend operator fun invoke(): SearchFilters {
-        val unknown = Age.UNKNOWN.name
+    if (types.isEmpty()) throw MenuValueException("No animal types")
 
-        val types = listOf(NO_FILTER_SELECTED) + animalRepository.getAnimalTypes()
+    val ages = animalRepository.getAnimalAges()
+        .map { it.name }
+        .replace(AnimalWithDetails.Details.Age.UNKNOWN.name, DEFAULT_VALUE)
+        .map { it.toLowerCase(Locale.ROOT).capitalize() }
 
-        val ages = animalRepository.getAnimalAges()
-            .map {
-                if (it.name == unknown) {
-                    NO_FILTER_SELECTED
-                }
-                else {
-                    it.name.toLowerCase(Locale.ROOT).capitalize(Locale.ROOT)
-                }
-            }
+    return SearchFilters(ages, filteringTypes)
+  }
 
-        return SearchFilters(ages, types)
-    }
+  private fun List<String>.replace(old: String, new: String): List<String> {
+    return map { if (it == old) new else it }
+  }
 }

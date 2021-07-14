@@ -1,0 +1,8 @@
+package com.bignerdranch.android.petsaveapp.core.domain.model.user
+
+
+@Root(name = "users", strict = false)
+data class Users constructor(
+    @field:ElementList(entry = "user", inline = true)
+    @param:ElementList(entry = "user", inline = true)
+    val list: List<User>? = null)

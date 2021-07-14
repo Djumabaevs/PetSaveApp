@@ -1,37 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_animals_near_you_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_animalsnearyou"
-    app:startDestination="@id/animalsNearYouFragment">
+    tools:context=".animalsnearyou.presentation.AnimalsNearYouFragment">
 
-    <fragment
-        android:id="@+id/animalsNearYouFragment"
-        android:name="com.bignerdranch.android.petsaveapp.animalsnearyou.presentation.AnimalsNearYouFragment"
-        android:label="@string/animals_near_you_screen_label"
-        tools:layout="@layout/fragment_animals_near_you">
-        <deepLink app:uri="petsave://animalsnearyou" />
-        <action
-            android:id="@+id/action_animalsNearYou_to_details"
-            app:destination="@id/animalDetailsFragment" />
-    </fragment>
+  <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/animals_recycler_view"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_margin="@dimen/half_default_margin"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      android:descendantFocusability="blocksDescendants"
+      tools:layoutManager="GridLayoutManager"
+      tools:listitem="@layout/recycler_view_animal_item"
+      tools:spanCount="2"
+      app:layout_constraintTop_toTopOf="parent" />
 
-    <fragment
-        android:id="@+id/animalDetailsFragment"
-        android:name="com.bignerdranch.android.petsaveapp.animalsnearyou.models.AnimalDetailsFragment"
-        android:label="@string/animal_details_screen_label"
-        tools:layout="@layout/fragment_details">
+  <ProgressBar
+      android:id="@+id/progress_bar"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
 
-        <argument
-            android:name="id"
-            app:argType="long" />
-
-        <action
-            android:id="@+id/action_details_to_sharing"
-            app:destination="@+id/dynamicFeatureSharing">
-            <argument
-                android:name="id"
-                app:argType="long" />
-        </action>
-    </fragment>
-</navigation>
+</androidx.constraintlayout.widget.ConstraintLayout>

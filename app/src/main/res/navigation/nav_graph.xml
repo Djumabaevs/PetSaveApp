@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation android:id="@+id/nav_graph"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:startDestination="@id/nav_onboarding">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/animalsNearYou">
 
-    <include app:graph="@navigation/nav_onboarding" />
-    <include app:graph="@navigation/nav_animalsnearyou" />
-    <include app:graph="@navigation/nav_search" />
+  <fragment
+      android:id="@+id/animalsNearYou"
+      android:name="com.bignerdranch.android.petsaveapp.animalsnearyou.presentation.AnimalsNearYouFragment"
+      android:label="@string/animals_near_you_screen_label"
+      tools:layout="@layout/fragment_animals_near_you" />
 
-    <include-dynamic
-        android:id="@id/dynamicFeatureSharing"
-        app:graphPackage="com.bignerdranch.android.petsaveapp.sharing"
-        app:graphResName="nav_sharing"
-        app:moduleName="sharing" />
+  <fragment
+      android:id="@+id/search"
+      android:name="com.bignerdranch.android.petsaveapp.search.presentation.SearchFragment"
+      android:label="@string/search_screen_label"
+      tools:layout="@layout/fragment_search" />
+
+  <fragment
+      android:id="@+id/report"
+      android:name="com.bignerdranch.android.petsaveapp.report.presentation.ReportDetailFragment"
+      android:label="@string/report_screen_label"
+      tools:layout="@layout/fragment_search" />
 </navigation>
