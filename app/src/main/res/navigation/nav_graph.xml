@@ -2,20 +2,15 @@
 <navigation android:id="@+id/nav_graph"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/animalsNearYou">
+    app:startDestination="@id/nav_onboarding">
 
-    <fragment
-        android:id="@+id/animalsNearYou"
-        android:name="com.bignerdranch.android.petsaveapp.animalsnearyou.presentation.AnimalsNearYouFragment"
-        android:label="@string/animals_near_you_screen_label"
-        tools:layout="@layout/fragment_animals_near_you">
-    </fragment>
+    <include app:graph="@navigation/nav_onboarding" />
+    <include app:graph="@navigation/nav_animalsnearyou" />
+    <include app:graph="@navigation/nav_search" />
 
-    <fragment
-        android:id="@+id/search"
-        android:name="com.bignerdranch.android.petsaveapp.search.presentation.SearchFragment"
-        android:label="@string/search_screen_label"
-        tools:layout="@layout/fragment_search">
-    </fragment>
+    <include-dynamic
+        android:id="@id/dynamicFeatureSharing"
+        app:graphPackage="com.bignerdranch.android.petsaveapp.sharing"
+        app:graphResName="nav_sharing"
+        app:moduleName="sharing" />
 </navigation>

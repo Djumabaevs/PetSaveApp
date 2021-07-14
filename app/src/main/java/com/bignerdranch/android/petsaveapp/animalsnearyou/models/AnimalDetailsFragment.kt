@@ -43,6 +43,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
 import com.bignerdranch.android.petsaveapp.R
+import com.bignerdranch.android.petsaveapp.common.utils.setImage
+import com.bignerdranch.android.petsaveapp.databinding.FragmentDetailsBinding
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -67,9 +69,9 @@ class AnimalDetailsFragment : Fragment() {
   }
 
   override fun onCreateView(
-      inflater: LayoutInflater,
-      container: ViewGroup?,
-      savedInstanceState: Bundle?
+    inflater: LayoutInflater,
+    container: ViewGroup?,
+    savedInstanceState: Bundle?
   ): View {
     _binding = FragmentDetailsBinding.inflate(inflater, container, false)
 
