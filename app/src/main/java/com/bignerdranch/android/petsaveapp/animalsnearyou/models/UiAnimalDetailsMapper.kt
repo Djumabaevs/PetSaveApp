@@ -34,9 +34,9 @@
 
 package com.bignerdranch.android.petsaveapp.animalsnearyou.models
 
-import com.raywenderlich.android.petsave.animalsnearyou.presentation.animaldetails.model.UIAnimalDetailed
-import com.raywenderlich.android.petsave.common.domain.model.animal.details.AnimalWithDetails
-import com.raywenderlich.android.petsave.common.presentation.model.mappers.UiMapper
+
+import com.bignerdranch.android.petsaveapp.common.domain.model.animal.details.AnimalWithDetails
+import com.bignerdranch.android.petsaveapp.common.presentation.model.mappers.UiMapper
 import javax.inject.Inject
 
 class UiAnimalDetailsMapper @Inject constructor(): UiMapper<AnimalWithDetails, UIAnimalDetailed> {

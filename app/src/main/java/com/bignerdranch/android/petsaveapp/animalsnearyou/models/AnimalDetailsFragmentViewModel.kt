@@ -38,10 +38,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.raywenderlich.android.petsave.common.domain.model.animal.details.AnimalWithDetails
-import com.raywenderlich.android.petsave.animalsnearyou.presentation.animaldetails.model.mappers.UiAnimalDetailsMapper
-import com.raywenderlich.android.petsave.common.domain.usecases.GetAnimalDetails
-import com.raywenderlich.android.petsave.common.utils.DispatchersProvider
+import com.bignerdranch.android.petsaveapp.animalsnearyou.domain.usecases.GetAnimalDetails
+import com.bignerdranch.android.petsaveapp.common.domain.model.animal.details.AnimalWithDetails
+import com.bignerdranch.android.petsaveapp.common.utils.DispatchersProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -49,9 +48,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AnimalDetailsFragmentViewModel @Inject constructor(
-    private val uiAnimalDetailsMapper: UiAnimalDetailsMapper,
-    private val getAnimalDetails: GetAnimalDetails,
-    private val dispatchersProvider: DispatchersProvider
+  private val uiAnimalDetailsMapper: UiAnimalDetailsMapper,
+  private val getAnimalDetails: GetAnimalDetails,
+  private val dispatchersProvider: DispatchersProvider
 ): ViewModel() {
 
   val state: LiveData<AnimalDetailsViewState> get() = _state

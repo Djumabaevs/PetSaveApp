@@ -34,7 +34,6 @@
 
 package com.bignerdranch.android.petsaveapp.animalsnearyou.models
 
-import com.raywenderlich.android.petsave.animalsnearyou.presentation.animaldetails.model.UIAnimalDetailed
 
 sealed class AnimalDetailsViewState {
   object Loading : AnimalDetailsViewState()
