@@ -1,5 +1,11 @@
 package com.bignerdranch.android.petsaveapp.search.domain.usecases
 
+import com.bignerdranch.android.petsaveapp.core.domain.model.animal.AnimalWithDetails
+import com.bignerdranch.android.petsaveapp.core.domain.repositories.AnimalRepository
+import com.bignerdranch.android.petsaveapp.search.domain.MenuValueException
+import com.bignerdranch.android.petsaveapp.search.domain.model.SearchFilters
+import java.util.*
+import javax.inject.Inject
 
 class GetSearchFilters @Inject constructor(
   private val animalRepository: AnimalRepository

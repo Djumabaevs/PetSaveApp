@@ -1,5 +1,9 @@
 package com.bignerdranch.android.petsaveapp.core.data.api.model.mappers
 
+import com.bignerdranch.android.petsaveapp.core.data.api.model.ApiPagination
+import com.bignerdranch.android.petsaveapp.core.domain.model.pagination.Pagination
+import javax.inject.Inject
+
 class ApiPaginationMapper @Inject constructor(): ApiMapper<ApiPagination?, Pagination> {
 
   override fun mapToDomain(apiEntity: ApiPagination?): Pagination {

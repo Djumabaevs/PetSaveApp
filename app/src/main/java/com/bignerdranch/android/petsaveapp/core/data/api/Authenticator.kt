@@ -1,5 +1,12 @@
 package com.bignerdranch.android.petsaveapp.core.data.api
 
+import java.security.KeyFactory
+import java.security.KeyPairGenerator
+import java.security.PrivateKey
+import java.security.PublicKey
+import java.security.Signature
+import java.security.spec.X509EncodedKeySpec
+
 class Authenticator {
 
   private val publicKey: PublicKey

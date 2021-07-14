@@ -1,5 +1,10 @@
 package com.bignerdranch.android.petsaveapp.core.data.cache.model.cachedanimal
 
+import com.bignerdranch.android.petsaveapp.core.domain.model.animal.AdoptionStatus
+import com.bignerdranch.android.petsaveapp.core.domain.model.animal.Animal
+import com.bignerdranch.android.petsaveapp.core.domain.model.animal.Media
+import com.bignerdranch.android.petsaveapp.core.utils.DateTimeUtils
+
 data class CachedAnimal(
     val animalId: Long,
     val name: String,

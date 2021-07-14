@@ -1,7 +1,7 @@
 package com.bignerdranch.android.petsaveapp.core.data.preferences
 
 
-interface Preferences {
+interface  Preferences {
 
   fun putToken(token: String)
 

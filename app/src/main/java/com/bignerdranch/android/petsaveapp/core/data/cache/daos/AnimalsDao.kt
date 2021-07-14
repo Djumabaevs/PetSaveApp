@@ -1,5 +1,9 @@
 package com.bignerdranch.android.petsaveapp.core.data.cache.daos
 
+import androidx.room.*
+import com.bignerdranch.android.petsaveapp.core.data.cache.model.cachedanimal.*
+import io.reactivex.Flowable
+
 @Dao
 abstract class AnimalsDao {
 

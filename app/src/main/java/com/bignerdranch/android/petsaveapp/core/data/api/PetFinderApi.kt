@@ -1,5 +1,9 @@
 package com.bignerdranch.android.petsaveapp.core.data.api
 
+import com.bignerdranch.android.petsaveapp.core.data.api.model.ApiPaginatedAnimals
+import retrofit2.http.GET
+import retrofit2.http.Query
+
 interface PetFinderApi {
 
   @GET(ApiConstants.ANIMALS_ENDPOINT)

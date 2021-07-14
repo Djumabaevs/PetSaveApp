@@ -1,5 +1,15 @@
 package com.bignerdranch.android.petsaveapp.core.data.api
 
+
+import android.util.Base64
+import java.util.*
+import kotlinx.coroutines.Dispatchers.Default
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+
 class ReportManager {
 
   private val serverAuthenticator = Authenticator()

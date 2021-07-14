@@ -1,5 +1,11 @@
 package com.bignerdranch.android.petsaveapp.core.data.cache.model.cachedanimal
 
+import androidx.room.Entity
+import androidx.room.ForeignKey
+import androidx.room.Index
+import androidx.room.PrimaryKey
+import com.bignerdranch.android.petsaveapp.core.domain.model.animal.Media
+
 
 @Entity(
     tableName = "videos",

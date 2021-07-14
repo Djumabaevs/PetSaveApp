@@ -1,5 +1,12 @@
 package com.bignerdranch.android.petsaveapp.core.domain.repositories
 
+import com.bignerdranch.android.petsaveapp.core.domain.model.animal.Animal
+import com.bignerdranch.android.petsaveapp.core.domain.model.animal.AnimalWithDetails
+import com.bignerdranch.android.petsaveapp.core.domain.model.pagination.PaginatedAnimals
+import com.bignerdranch.android.petsaveapp.search.domain.model.SearchParameters
+import com.bignerdranch.android.petsaveapp.search.domain.model.SearchResults
+import io.reactivex.Flowable
+
 
 interface AnimalRepository {
 

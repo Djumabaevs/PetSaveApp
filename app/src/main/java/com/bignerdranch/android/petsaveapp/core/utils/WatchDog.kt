@@ -1,5 +1,15 @@
 package com.bignerdranch.android.petsaveapp.core.utils
 
+import android.content.Context
+import android.content.pm.PackageManager
+import android.os.Build
+import android.os.Debug
+import com.google.android.gms.common.ConnectionResult
+import com.google.android.gms.common.GoogleApiAvailability
+import java.io.BufferedReader
+import java.io.File
+import java.io.InputStreamReader
+import java.util.*
 
 class WatchDog {
 

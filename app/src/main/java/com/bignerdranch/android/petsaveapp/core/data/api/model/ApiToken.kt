@@ -1,5 +1,8 @@
 package com.bignerdranch.android.petsaveapp.core.data.api.model
 
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
+import org.threeten.bp.Instant
 
 @JsonClass(generateAdapter = true)
 data class ApiToken(

@@ -1,5 +1,10 @@
 package com.bignerdranch.android.petsaveapp.core.data.cache.model.cachedanimal
 
+import androidx.room.Embedded
+import androidx.room.Junction
+import androidx.room.Relation
+import com.bignerdranch.android.petsaveapp.core.domain.model.animal.AnimalWithDetails
+
 
 data class CachedAnimalAggregate(
     @Embedded

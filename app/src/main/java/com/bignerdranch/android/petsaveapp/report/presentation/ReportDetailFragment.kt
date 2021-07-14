@@ -1,5 +1,33 @@
 package com.bignerdranch.android.petsaveapp.report.presentation
 
+import android.Manifest
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
+import android.os.Bundle
+import android.provider.MediaStore
+import android.text.InputType
+import android.util.Base64
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import com.bignerdranch.android.petsaveapp.core.MainActivity
+import com.bignerdranch.android.petsaveapp.core.utils.DataValidator.Companion.isValidJPEGAtPath
+import com.bignerdranch.android.petsaveapp.core.utils.Encryption.Companion.encryptFile
+import com.bignerdranch.android.petsaveapp.databinding.FragmentReportDetailBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_report_detail.*
+import java.io.File
+import java.util.*
+import java.util.concurrent.atomic.AtomicInteger
 
 @AndroidEntryPoint
 class ReportDetailFragment : Fragment() {

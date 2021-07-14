@@ -1,5 +1,9 @@
 package com.bignerdranch.android.petsaveapp.core.data.api.model.mappers
 
+import com.bignerdranch.android.petsaveapp.core.data.api.model.ApiColors
+import com.bignerdranch.android.petsaveapp.core.domain.model.animal.AnimalWithDetails
+import javax.inject.Inject
+
 class ApiColorsMapper @Inject constructor():
     ApiMapper<ApiColors?, AnimalWithDetails.Details.Colors> {
 

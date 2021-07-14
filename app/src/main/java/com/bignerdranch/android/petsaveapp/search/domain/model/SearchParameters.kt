@@ -1,5 +1,6 @@
 package com.bignerdranch.android.petsaveapp.search.domain.model
 
+import java.util.*
 
 data class SearchParameters(
     val name: String,

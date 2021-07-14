@@ -1,5 +1,13 @@
 package com.bignerdranch.android.petsaveapp.core.presentation
 
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
+import com.bignerdranch.android.petsaveapp.core.presentation.model.UIAnimal
+import com.bignerdranch.android.petsaveapp.core.utils.setImage
+import com.bignerdranch.android.petsaveapp.databinding.RecyclerViewAnimalItemBinding
 
 class AnimalsAdapter: ListAdapter<UIAnimal, AnimalsAdapter.AnimalsViewHolder>(
     ITEM_COMPARATOR) {

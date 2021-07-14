@@ -1,5 +1,20 @@
 package com.bignerdranch.android.petsaveapp.core.data.di
 
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
+import okhttp3.CertificatePinner
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
+import javax.inject.Singleton
+import com.babylon.certificatetransparency.certificateTransparencyInterceptor
+import com.bignerdranch.android.petsaveapp.core.data.api.ApiConstants
+import com.bignerdranch.android.petsaveapp.core.data.api.PetFinderApi
+import com.bignerdranch.android.petsaveapp.core.data.api.interceptors.AuthenticationInterceptor
+import com.bignerdranch.android.petsaveapp.core.data.api.interceptors.LoggingInterceptor
 
 @InstallIn(ApplicationComponent::class)
 @Module

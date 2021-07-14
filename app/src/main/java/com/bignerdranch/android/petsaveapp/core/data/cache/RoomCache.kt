@@ -1,5 +1,12 @@
 package com.bignerdranch.android.petsaveapp.core.data.cache
 
+import com.bignerdranch.android.petsaveapp.core.data.cache.daos.AnimalsDao
+import com.bignerdranch.android.petsaveapp.core.data.cache.daos.OrganizationsDao
+import com.bignerdranch.android.petsaveapp.core.data.cache.model.cachedanimal.CachedAnimalAggregate
+import com.bignerdranch.android.petsaveapp.core.data.cache.model.cachedorganization.CachedOrganization
+import io.reactivex.Flowable
+import javax.inject.Inject
+
 class RoomCache @Inject constructor(
     private val animalsDao: AnimalsDao,
     private val organizationsDao: OrganizationsDao

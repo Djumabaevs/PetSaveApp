@@ -1,5 +1,14 @@
 package com.bignerdranch.android.petsaveapp.search.domain.usecases
 
+import com.bignerdranch.android.petsaveapp.core.domain.model.NoMoreAnimalsException
+import com.bignerdranch.android.petsaveapp.core.domain.model.pagination.Pagination
+import com.bignerdranch.android.petsaveapp.core.domain.model.pagination.Pagination.Companion.DEFAULT_PAGE_SIZE
+import com.bignerdranch.android.petsaveapp.core.domain.repositories.AnimalRepository
+import com.bignerdranch.android.petsaveapp.search.domain.model.SearchParameters
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.isActive
+import javax.inject.Inject
+import kotlin.coroutines.coroutineContext
 
 class SearchAnimalsRemotely @Inject constructor(
     private val animalRepository: AnimalRepository

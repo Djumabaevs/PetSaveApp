@@ -4,6 +4,27 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
+import com.bignerdranch.android.logging.Logger
+import com.bignerdranch.android.petsaveapp.core.domain.model.NoMoreAnimalsException
+import com.bignerdranch.android.petsaveapp.core.domain.model.animal.Animal
+import com.bignerdranch.android.petsaveapp.core.domain.model.pagination.Pagination
+import com.bignerdranch.android.petsaveapp.core.presentation.Event
+import com.bignerdranch.android.petsaveapp.core.presentation.model.mappers.UiAnimalMapper
+import com.bignerdranch.android.petsaveapp.core.utils.DispatchersProvider
+import com.bignerdranch.android.petsaveapp.search.domain.model.SearchParameters
+import com.bignerdranch.android.petsaveapp.search.domain.model.SearchResults
+import com.bignerdranch.android.petsaveapp.search.domain.usecases.GetSearchFilters
+import com.bignerdranch.android.petsaveapp.search.domain.usecases.SearchAnimals
+import com.bignerdranch.android.petsaveapp.search.domain.usecases.SearchAnimalsRemotely
+//import dagger.assisted.Assisted
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
+import io.reactivex.subjects.BehaviorSubject
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class SearchFragmentViewModel @ViewModelInject constructor(
   @Assisted private val savedStateHandle: SavedStateHandle,

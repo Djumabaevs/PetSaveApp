@@ -1,5 +1,13 @@
 package com.bignerdranch.android.petsaveapp.core.data.preferences
 
+import android.content.Context
+import android.content.SharedPreferences
+import com.bignerdranch.android.petsaveapp.core.data.preferences.PreferencesConstants.KEY_TOKEN
+import com.bignerdranch.android.petsaveapp.core.data.preferences.PreferencesConstants.KEY_TOKEN_EXPIRATION_TIME
+import com.bignerdranch.android.petsaveapp.core.data.preferences.PreferencesConstants.KEY_TOKEN_TYPE
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
+import javax.inject.Singleton
 
 @Singleton
 class PetSavePreferences @Inject constructor(

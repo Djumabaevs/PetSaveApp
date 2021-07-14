@@ -1,6 +1,19 @@
 package com.bignerdranch.android.petsaveapp.search.domain.usecases
 
 
+import com.bignerdranch.android.petsaveapp.core.domain.repositories.AnimalRepository
+import com.bignerdranch.android.petsaveapp.search.domain.model.SearchParameters
+import com.bignerdranch.android.petsaveapp.search.domain.model.SearchResults
+import io.reactivex.BackpressureStrategy
+import io.reactivex.Flowable
+import io.reactivex.Observable
+import io.reactivex.functions.Function3
+import io.reactivex.rxkotlin.Observables
+import io.reactivex.subjects.BehaviorSubject
+import java.util.*
+import java.util.concurrent.TimeUnit
+import javax.inject.Inject
+
 class SearchAnimals @Inject constructor(
     private val animalRepository: AnimalRepository
 ) {

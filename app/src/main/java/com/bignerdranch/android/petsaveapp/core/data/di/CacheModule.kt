@@ -1,5 +1,18 @@
 package com.bignerdranch.android.petsaveapp.core.data.di
 
+import android.content.Context
+import androidx.room.Room
+import com.bignerdranch.android.petsaveapp.core.data.cache.Cache
+import com.bignerdranch.android.petsaveapp.core.data.cache.PetSaveDatabase
+import com.bignerdranch.android.petsaveapp.core.data.cache.RoomCache
+import com.bignerdranch.android.petsaveapp.core.data.cache.daos.AnimalsDao
+import com.bignerdranch.android.petsaveapp.core.data.cache.daos.OrganizationsDao
+import dagger.Binds
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
 
 @Module
 @InstallIn(ApplicationComponent::class)

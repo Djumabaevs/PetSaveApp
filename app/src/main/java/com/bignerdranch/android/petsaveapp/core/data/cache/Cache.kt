@@ -1,5 +1,9 @@
 package com.bignerdranch.android.petsaveapp.core.data.cache
 
+import com.bignerdranch.android.petsaveapp.core.data.cache.model.cachedanimal.CachedAnimalAggregate
+import com.bignerdranch.android.petsaveapp.core.data.cache.model.cachedorganization.CachedOrganization
+import io.reactivex.Flowable
+
 interface Cache {
   fun getNearbyAnimals(): Flowable<List<CachedAnimalAggregate>>
   fun storeOrganizations(organizations: List<CachedOrganization>)

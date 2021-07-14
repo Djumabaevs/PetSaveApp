@@ -1,5 +1,7 @@
 package com.bignerdranch.android.petsaveapp.core.domain.model.animal
 
+import org.threeten.bp.LocalDateTime
+
 
 data class Animal(
     val id: Long,

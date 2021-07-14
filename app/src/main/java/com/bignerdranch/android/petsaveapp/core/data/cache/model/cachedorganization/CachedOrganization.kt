@@ -1,5 +1,9 @@
 package com.bignerdranch.android.petsaveapp.core.data.cache.model.cachedorganization
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import com.bignerdranch.android.petsaveapp.core.domain.model.organization.Organization
+
 
 @Entity(tableName = "organizations")
 data class CachedOrganization(

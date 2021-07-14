@@ -1,5 +1,14 @@
 package com.bignerdranch.android.petsaveapp.core.domain.repositories
 
+import java.io.File
+import java.io.FileOutputStream
+import java.io.ObjectOutputStream
+import android.content.Context
+import android.util.Base64
+import com.bignerdranch.android.petsaveapp.core.domain.model.user.User
+import com.bignerdranch.android.petsaveapp.core.domain.model.user.Users
+import org.simpleframework.xml.core.Persister
+
 class UserRepository {
   companion object {
     fun createDataSource(context: Context, outFile: File, password: ByteArray) {

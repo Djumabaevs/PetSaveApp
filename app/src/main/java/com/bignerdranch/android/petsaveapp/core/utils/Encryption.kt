@@ -1,6 +1,26 @@
 package com.bignerdranch.android.petsaveapp.core.utils
 
 
+import android.annotation.TargetApi
+import android.content.Context
+import android.security.keystore.KeyGenParameterSpec
+import android.security.keystore.KeyProperties
+import android.util.Log
+import androidx.security.crypto.EncryptedFile
+import androidx.security.crypto.MasterKey
+import java.io.File
+import java.security.KeyStore
+import java.security.SecureRandom
+import java.util.HashMap
+import javax.crypto.Cipher
+import javax.crypto.KeyGenerator
+import javax.crypto.SecretKey
+import javax.crypto.SecretKeyFactory
+import javax.crypto.spec.GCMParameterSpec
+import javax.crypto.spec.IvParameterSpec
+import javax.crypto.spec.PBEKeySpec
+import javax.crypto.spec.SecretKeySpec
+
 class Encryption {
   companion object {
 

@@ -1,5 +1,9 @@
 package com.bignerdranch.android.petsaveapp.core.domain.model.user
 
+import org.simpleframework.xml.Element
+import org.simpleframework.xml.Root
+import java.io.Serializable
+
 
 @Root(name = "user", strict = false)
 data class User constructor(

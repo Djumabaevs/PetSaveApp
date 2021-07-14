@@ -1,5 +1,18 @@
 package com.bignerdranch.android.petsaveapp.core.data
 
+import com.bignerdranch.android.petsaveapp.core.data.api.PetFinderApi
+import com.bignerdranch.android.petsaveapp.core.data.api.model.mappers.ApiAnimalMapper
+import com.bignerdranch.android.petsaveapp.core.data.api.model.mappers.ApiPaginationMapper
+import com.bignerdranch.android.petsaveapp.core.data.cache.Cache
+import com.bignerdranch.android.petsaveapp.core.data.cache.model.cachedanimal.CachedAnimalAggregate
+import com.bignerdranch.android.petsaveapp.core.data.cache.model.cachedorganization.CachedOrganization
+import com.bignerdranch.android.petsaveapp.core.domain.model.animal.Animal
+import com.bignerdranch.android.petsaveapp.core.domain.model.animal.AnimalWithDetails
+import com.bignerdranch.android.petsaveapp.core.domain.model.pagination.PaginatedAnimals
+import com.bignerdranch.android.petsaveapp.core.domain.repositories.AnimalRepository
+import com.bignerdranch.android.petsaveapp.core.utils.DispatchersProvider
+import com.bignerdranch.android.petsaveapp.search.domain.model.SearchParameters
+import com.bignerdranch.android.petsaveapp.search.domain.model.SearchResults
 import dagger.hilt.android.scopes.ActivityRetainedScoped
 import io.reactivex.Flowable
 import kotlinx.coroutines.CoroutineScope
