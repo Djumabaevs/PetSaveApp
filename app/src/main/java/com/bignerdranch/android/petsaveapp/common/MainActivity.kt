@@ -1,7 +1,10 @@
 package com.bignerdranch.android.petsaveapp.common
 
 import android.os.Bundle
+import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -10,15 +13,26 @@ import androidx.navigation.ui.setupWithNavController
 import com.bignerdranch.android.petsaveapp.R
 import com.bignerdranch.android.petsaveapp.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    private val navController by lazy { findNavController(R.id.nav_host_fragment) }
+    private val viewModel by viewModels<MainActivityViewModel>()
+
+    private val navController by lazy {
+        (supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as DynamicNavHostFragment)
+            .navController
+    }
+
     private val appBarConfiguration by lazy {
-        AppBarConfiguration(topLevelDestinationIds = setOf(R.id.animalsNearYou, R.id.search))
+        AppBarConfiguration(topLevelDestinationIds = setOf(
+            R.id.onboardingFragment,
+            R.id.animalsNearYouFragment,
+            R.id.searchFragment
+        ))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,11 +40,14 @@ class MainActivity : AppCompatActivity() {
         setTheme(R.style.AppTheme)
 
         super.onCreate(savedInstanceState)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setupActionBar()
         setupBottomNav()
+        triggerStartDestinationEvent()
+        observeViewEffects()
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -43,6 +60,39 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupBottomNav() {
-        binding.bottomNavigationId.setupWithNavController(navController)
+        binding.bottomNavigation.setupWithNavController(navController)
+        hideBottomNavWhenNeeded()
+    }
+
+    private fun hideBottomNavWhenNeeded() {
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.onboardingFragment -> binding.bottomNavigation.visibility = View.GONE
+                else -> binding.bottomNavigation.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    private fun triggerStartDestinationEvent() {
+        viewModel.onEvent(MainActivityEvent.DefineStartDestination)
+    }
+
+    private fun observeViewEffects() {
+        lifecycleScope.launchWhenStarted {
+            viewModel.viewEffect.collect { reactTo(it) }
+        }
+    }
+
+    private fun reactTo(effect: MainActivityViewEffect) {
+        when (effect) {
+            is MainActivityViewEffect.SetStartDestination -> setNavGraphStartDestination(effect.destination)
+        }
+    }
+
+    private fun setNavGraphStartDestination(startDestination: Int) {
+        val navGraph = navController.navInflater.inflate(R.navigation.nav_graph)
+
+        navGraph.startDestination = startDestination
+        navController.graph = navGraph
     }
 }

@@ -11,6 +11,10 @@ abstract class AnimalsDao {
     @Query("SELECT * FROM animals ORDER BY animalId DESC")
     abstract fun getAllAnimals(): Flowable<List<CachedAnimalAggregate>>
 
+    @Transaction
+    @Query("SELECT * FROM animals WHERE animalId IS :animalId")
+    abstract suspend fun getAnimal(animalId: Long): CachedAnimalAggregate
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract suspend fun insertAnimalAggregate(
         animal: CachedAnimalWithDetails,

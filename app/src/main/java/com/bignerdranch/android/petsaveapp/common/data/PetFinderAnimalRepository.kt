@@ -37,6 +37,13 @@ class PetFinderAnimalRepository @Inject constructor(
             }
     }
 
+    override suspend fun getAnimal(animalId: Long): AnimalWithDetails {
+        val (animal, photos, videos, tags) = cache.getAnimal(animalId)
+        val organization = cache.getOrganization(animal.organizationId)
+
+        return animal.toDomain(photos, videos, tags, organization)
+    }
+
     override suspend fun requestMoreAnimals(pageToLoad: Int, numberOfItems: Int): PaginatedAnimals {
         try {
             val (apiAnimals, apiPagination) = api.getNearbyAnimals(
