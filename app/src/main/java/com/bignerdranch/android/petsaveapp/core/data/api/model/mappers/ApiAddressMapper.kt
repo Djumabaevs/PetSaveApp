@@ -1,5 +1,9 @@
 package com.bignerdranch.android.petsaveapp.core.data.api.model.mappers
 
+import com.bignerdranch.android.petsaveapp.core.data.api.model.ApiAddress
+import com.bignerdranch.android.petsaveapp.core.domain.model.organization.Organization
+import javax.inject.Inject
+
 
 class ApiAddressMapper @Inject constructor() : ApiMapper<ApiAddress?, Organization.Address> {
 

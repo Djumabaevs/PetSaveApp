@@ -1,13 +1,14 @@
 package com.bignerdranch.android.petsaveapp.common.data
 
-import com.bignerdranch.android.petsaveapp.common.domain.model.animal.AdoptionStatus
-import com.bignerdranch.android.petsaveapp.common.domain.model.animal.Animal
-import com.bignerdranch.android.petsaveapp.common.domain.model.animal.Media
-import com.bignerdranch.android.petsaveapp.common.domain.model.animal.details.*
-import com.bignerdranch.android.petsaveapp.common.domain.model.organization.Organization
-import com.bignerdranch.android.petsaveapp.common.domain.model.pagination.PaginatedAnimals
-import com.bignerdranch.android.petsaveapp.common.domain.model.pagination.Pagination
-import com.bignerdranch.android.petsaveapp.common.domain.repositories.AnimalRepository
+
+import com.bignerdranch.android.petsaveapp.core.domain.model.animal.AdoptionStatus
+import com.bignerdranch.android.petsaveapp.core.domain.model.animal.Animal
+import com.bignerdranch.android.petsaveapp.core.domain.model.animal.AnimalWithDetails
+import com.bignerdranch.android.petsaveapp.core.domain.model.animal.Media
+import com.bignerdranch.android.petsaveapp.core.domain.model.organization.Organization
+import com.bignerdranch.android.petsaveapp.core.domain.model.pagination.PaginatedAnimals
+import com.bignerdranch.android.petsaveapp.core.domain.model.pagination.Pagination
+import com.bignerdranch.android.petsaveapp.core.domain.repositories.AnimalRepository
 import com.bignerdranch.android.petsaveapp.search.domain.model.SearchParameters
 import com.bignerdranch.android.petsaveapp.search.domain.model.SearchResults
 import io.reactivex.BackpressureStrategy
@@ -36,31 +37,35 @@ class FakeRepository @Inject constructor() : AnimalRepository {
             distance = 50f
     )
 
-    private val healthDetails = HealthDetails(
-            isDeclawed = false,
-            isSpayedOrNeutered = true,
-            hasSpecialNeeds = false,
-            shotsAreCurrent = true
+    private val healthDetails = AnimalWithDetails.Details.HealthDetails(
+        isDeclawed = false,
+        isSpayedOrNeutered = true,
+        hasSpecialNeeds = false,
+        shotsAreCurrent = true
     )
 
-    private val habitatAdaptation = HabitatAdaptation(
-            goodWithCats = true,
-            goodWithChildren = true,
-            goodWithDogs = true
+    private val habitatAdaptation = AnimalWithDetails.Details.HabitatAdaptation(
+        goodWithCats = true,
+        goodWithChildren = true,
+        goodWithDogs = true
     )
 
-    private val localAnimalDetails = Details(
-            description = "Sings opera",
-            age = Age.BABY,
-            species = "Dog",
-            breed = Breed(primary = "Bulldog", secondary = ""),
-            colors = Colors(primary = "White", secondary = "Black", tertiary = ""),
-            gender = Gender.MALE,
-            size = Size.MEDIUM,
-            coat = Coat.SHORT,
-            healthDetails = healthDetails,
-            habitatAdaptation = habitatAdaptation,
-            organization = organization
+    private val localAnimalDetails = AnimalWithDetails.Details(
+        description = "Sings opera",
+        age = AnimalWithDetails.Details.Age.BABY,
+        species = "Dog",
+        breed = AnimalWithDetails.Details.Breed(primary = "Bulldog", secondary = ""),
+        colors = AnimalWithDetails.Details.Colors(
+            primary = "White",
+            secondary = "Black",
+            tertiary = ""
+        ),
+        gender = AnimalWithDetails.Details.Gender.MALE,
+        size = AnimalWithDetails.Details.Size.MEDIUM,
+        coat = AnimalWithDetails.Details.Coat.SHORT,
+        healthDetails = healthDetails,
+        habitatAdaptation = habitatAdaptation,
+        organization = organization
     )
 
     private val localAnimal = AnimalWithDetails(
@@ -74,18 +79,22 @@ class FakeRepository @Inject constructor() : AnimalRepository {
             publishedAt = LocalDateTime.now()
     )
 
-    private val remoteAnimalDetails = Details(
-            description = "Loves crochet",
-            age = Age.SENIOR,
-            species = "Dog",
-            breed = Breed(primary = "German Shepherd", secondary = ""),
-            colors = Colors(primary = "Black", secondary = "Orange", tertiary = "Yellow"),
-            gender = Gender.FEMALE,
-            size = Size.LARGE,
-            coat = Coat.MEDIUM,
-            healthDetails = healthDetails,
-            habitatAdaptation = habitatAdaptation,
-            organization = organization
+    private val remoteAnimalDetails = AnimalWithDetails.Details(
+        description = "Loves crochet",
+        age = AnimalWithDetails.Details.Age.SENIOR,
+        species = "Dog",
+        breed = AnimalWithDetails.Details.Breed(primary = "German Shepherd", secondary = ""),
+        colors = AnimalWithDetails.Details.Colors(
+            primary = "Black",
+            secondary = "Orange",
+            tertiary = "Yellow"
+        ),
+        gender = AnimalWithDetails.Details.Gender.FEMALE,
+        size = AnimalWithDetails.Details.Size.LARGE,
+        coat = AnimalWithDetails.Details.Coat.MEDIUM,
+        healthDetails = healthDetails,
+        habitatAdaptation = habitatAdaptation,
+        organization = organization
     )
 
     private val remoteAnimal = AnimalWithDetails(
@@ -132,12 +141,12 @@ class FakeRepository @Inject constructor() : AnimalRepository {
         return listOf("dog")
     }
 
-    override suspend fun getAnimal(animalId: Long): AnimalWithDetails {
-        return mutableLocalAnimals.find { it.id == animalId }!!
-    }
+//    override suspend fun getAnimal(animalId: Long): AnimalWithDetails {
+//        return mutableLocalAnimals.find { it.id == animalId }!!
+//    }
 
-    override fun getAnimalAges(): List<Age> {
-        return Age.values().toList()
+    override fun getAnimalAges(): List<AnimalWithDetails.Details.Age> {
+        return AnimalWithDetails.Details.Age.values().toList()
     }
 
     override fun searchCachedAnimalsBy(searchParameters: SearchParameters): Flowable<SearchResults> {

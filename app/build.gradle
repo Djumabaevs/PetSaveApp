@@ -83,6 +83,7 @@ dependencies {
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_android_version"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 
     // Support Libraries
     implementation "androidx.appcompat:appcompat:$appcompat_version"
@@ -95,6 +96,8 @@ dependencies {
     testImplementation("org.threeten:threetenbp:${threetenbp_version}") {
         exclude module: "com.jakewharton.threetenabp:threetenabp:${threetenabp_version}"
     }
+
+    implementation "org.jetbrains.anko:anko-common:0.10.0"
 
     // Instrumented tests dependencies
     androidTestImplementation "androidx.test.ext:junit:$androidx_junit_version"
@@ -143,6 +146,10 @@ dependencies {
 
     androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
     kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hilt_version"
+
+    kapt "androidx.hilt:hilt-compiler:$androidx_hilt_version"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$androidx_hilt_version"
+
 
     // UI
     implementation "com.github.bumptech.glide:glide:$glide_version"

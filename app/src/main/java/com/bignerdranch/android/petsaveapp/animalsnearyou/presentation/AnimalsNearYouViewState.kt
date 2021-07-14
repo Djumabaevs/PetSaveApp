@@ -1,5 +1,8 @@
 package com.bignerdranch.android.petsaveapp.animalsnearyou.presentation
 
+import com.bignerdranch.android.petsaveapp.core.presentation.Event
+import com.bignerdranch.android.petsaveapp.core.presentation.model.UIAnimal
+
 
 data class AnimalsNearYouViewState(
     val loading: Boolean = true,

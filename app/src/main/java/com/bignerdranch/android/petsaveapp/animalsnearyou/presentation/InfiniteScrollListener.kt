@@ -1,5 +1,7 @@
 package com.bignerdranch.android.petsaveapp.animalsnearyou.presentation
 
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 
 abstract class InfiniteScrollListener(

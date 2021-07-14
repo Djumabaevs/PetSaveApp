@@ -1,5 +1,24 @@
 package com.bignerdranch.android.petsaveapp.animalsnearyou.presentation
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import com.bignerdranch.android.petsaveapp.databinding.FragmentAnimalsNearYouBinding
+import androidx.lifecycle.Observer
+import androidx.lifecycle.observe
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.bignerdranch.android.petsaveapp.core.domain.model.NoMoreAnimalsException
+import com.bignerdranch.android.petsaveapp.core.presentation.AnimalsAdapter
+import com.bignerdranch.android.petsaveapp.core.presentation.Event
+import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
+import okio.IOException
+import retrofit2.HttpException
 
 @AndroidEntryPoint
 class AnimalsNearYouFragment : Fragment() {
@@ -14,7 +33,7 @@ class AnimalsNearYouFragment : Fragment() {
   private var _binding: FragmentAnimalsNearYouBinding? = null
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-      savedInstanceState: Bundle?): View? {
+                            savedInstanceState: Bundle?): View? {
 
     _binding = FragmentAnimalsNearYouBinding.inflate(inflater, container, false)
 

@@ -1,5 +1,14 @@
 package com.bignerdranch.android.petsaveapp.core.data.api.model.mappers
 
+import com.bignerdranch.android.petsaveapp.core.data.api.model.ApiAnimal
+import com.bignerdranch.android.petsaveapp.core.domain.model.animal.AdoptionStatus
+import com.bignerdranch.android.petsaveapp.core.domain.model.animal.AnimalWithDetails
+import com.bignerdranch.android.petsaveapp.core.domain.model.animal.Media
+import com.bignerdranch.android.petsaveapp.core.domain.model.organization.Organization
+import com.bignerdranch.android.petsaveapp.core.utils.DateTimeUtils
+import java.util.*
+import javax.inject.Inject
+
 class ApiAnimalMapper @Inject constructor(
     private val apiBreedsMapper: ApiBreedsMapper,
     private val apiColorsMapper: ApiColorsMapper,

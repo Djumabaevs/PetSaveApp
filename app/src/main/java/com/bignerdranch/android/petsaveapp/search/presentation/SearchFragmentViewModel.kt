@@ -11,6 +11,7 @@ import com.bignerdranch.android.petsaveapp.core.domain.model.pagination.Paginati
 import com.bignerdranch.android.petsaveapp.core.presentation.Event
 import com.bignerdranch.android.petsaveapp.core.presentation.model.mappers.UiAnimalMapper
 import com.bignerdranch.android.petsaveapp.core.utils.DispatchersProvider
+import com.bignerdranch.android.petsaveapp.core.utils.createExceptionHandler
 import com.bignerdranch.android.petsaveapp.search.domain.model.SearchParameters
 import com.bignerdranch.android.petsaveapp.search.domain.model.SearchResults
 import com.bignerdranch.android.petsaveapp.search.domain.usecases.GetSearchFilters

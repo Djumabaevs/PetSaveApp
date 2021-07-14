@@ -1,5 +1,25 @@
 package com.bignerdranch.android.petsaveapp.animalsnearyou.presentation
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.bignerdranch.android.logging.Logger
+import com.bignerdranch.android.petsaveapp.core.domain.model.NoMoreAnimalsException
+import com.bignerdranch.android.petsaveapp.core.domain.model.animal.Animal
+import com.bignerdranch.android.petsaveapp.core.domain.model.pagination.Pagination
+import com.bignerdranch.android.petsaveapp.core.domain.usecases.GetAnimals
+import com.bignerdranch.android.petsaveapp.core.domain.usecases.RequestNextPageOfAnimals
+import com.bignerdranch.android.petsaveapp.core.presentation.Event
+import com.bignerdranch.android.petsaveapp.core.presentation.model.mappers.UiAnimalMapper
+import com.bignerdranch.android.petsaveapp.core.utils.DispatchersProvider
+import com.bignerdranch.android.petsaveapp.core.utils.createExceptionHandler
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
+import androidx.hilt.lifecycle.ViewModelInject
+import kotlinx.coroutines.launch
+
 
 class AnimalsNearYouFragmentViewModel @ViewModelInject constructor(
     private val requestNextPageOfAnimals: RequestNextPageOfAnimals,
