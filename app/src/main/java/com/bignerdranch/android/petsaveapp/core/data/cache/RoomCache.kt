@@ -24,6 +24,7 @@ class RoomCache @Inject constructor(
     animalsDao.insertAnimalsWithDetails(animals)
   }
 
+
   override suspend fun getAllTypes(): List<String> {
     return animalsDao.getAllTypes()
   }
