@@ -9,3 +9,4 @@ data class Users constructor(
     @field:ElementList(entry = "user", inline = true)
     @param:ElementList(entry = "user", inline = true)
     val list: List<User>? = null)
+
