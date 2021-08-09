@@ -2,14 +2,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.bignerdranch.android.petsaveapp">
-
+    <permission
+        android:name="com.bignerdranch.android.petsaveapp.report.presentation.ReportDetailFragment"
+        android:protectionLevel="signature"
+/>
+    <uses-permission android:name="com.bignerdranch.android.petsaveapp.report.presentation.ReportDetailFragment"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
 
     <application
         android:name=".PetSaveApplication"
-        android:allowBackup="true"
+        android:allowBackup="false"
+        android:installLocation="internalOnly"
         android:icon="@mipmap/pet"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
