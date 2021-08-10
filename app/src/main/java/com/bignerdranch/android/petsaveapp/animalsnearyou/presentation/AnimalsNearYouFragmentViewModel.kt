@@ -8,8 +8,8 @@ import com.bignerdranch.android.logging.Logger
 import com.bignerdranch.android.petsaveapp.core.domain.model.NoMoreAnimalsException
 import com.bignerdranch.android.petsaveapp.core.domain.model.animal.Animal
 import com.bignerdranch.android.petsaveapp.core.domain.model.pagination.Pagination
-import com.bignerdranch.android.petsaveapp.core.domain.usecases.GetAnimals
-import com.bignerdranch.android.petsaveapp.core.domain.usecases.RequestNextPageOfAnimals
+import com.bignerdranch.android.petsaveapp.animalsnearyou.domain.usecases.GetAnimals
+import com.bignerdranch.android.petsaveapp.animalsnearyou.domain.usecases.RequestNextPageOfAnimals
 import com.bignerdranch.android.petsaveapp.core.presentation.Event
 import com.bignerdranch.android.petsaveapp.core.presentation.model.mappers.UiAnimalMapper
 import com.bignerdranch.android.petsaveapp.core.utils.DispatchersProvider

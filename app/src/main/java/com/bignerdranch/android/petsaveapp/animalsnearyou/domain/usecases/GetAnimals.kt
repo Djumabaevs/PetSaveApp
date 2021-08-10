@@ -1,4 +1,4 @@
-package com.bignerdranch.android.petsaveapp.core.domain.usecases
+package com.bignerdranch.android.petsaveapp.animalsnearyou.domain.usecases
 
 import com.bignerdranch.android.petsaveapp.core.domain.repositories.AnimalRepository
 import javax.inject.Inject

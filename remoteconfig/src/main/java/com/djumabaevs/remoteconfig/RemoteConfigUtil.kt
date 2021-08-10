@@ -1,5 +1,10 @@
 package com.djumabaevs.remoteconfig
 
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig
+import com.google.firebase.remoteconfig.ktx.remoteConfig
+import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
+
 object RemoteConfigUtil {
     private val DEFAULTS: HashMap<String, Any> = hashMapOf()
     private lateinit var remoteConfig: FirebaseRemoteConfig

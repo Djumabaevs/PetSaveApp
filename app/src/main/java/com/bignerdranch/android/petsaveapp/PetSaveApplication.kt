@@ -2,6 +2,7 @@ package com.bignerdranch.android.petsaveapp
 
 import android.app.Application
 import com.bignerdranch.android.logging.Logger
+import com.djumabaevs.remoteconfig.RemoteConfigUtil
 import dagger.hilt.android.HiltAndroidApp
 
 
