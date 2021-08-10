@@ -201,7 +201,7 @@ class MainActivity : AppCompatActivity() {
       if (isSignedUp) {
         val fileInputStream = FileInputStream(it)
         val objectInputStream = ObjectInputStream(fileInputStream)
-        val list = objectInputStream.readObject() as ArrayList<User>
+        val list = objectInputStream.readObject() as ArrayList<*>
         val firstUser = list.first() as? User
         if (firstUser is User) {
           success = sendCredentialsToServer(Base64.decode(firstUser.password, Base64.NO_WRAP))
