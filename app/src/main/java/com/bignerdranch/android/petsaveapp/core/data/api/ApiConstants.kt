@@ -2,7 +2,7 @@ package com.bignerdranch.android.petsaveapp.core.data.api
 
 
 object ApiConstants {
-  const val BASE_ENDPOINT = "https://api.petfinder.com/v2/"
+  const val BASE_ENDPOINT = "http://api.petfinder.com/v2/"
   const val AUTH_ENDPOINT = "oauth2/token/"
   const val ANIMALS_ENDPOINT = "animals"
 
