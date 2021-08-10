@@ -5,7 +5,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Debug
 import com.google.android.gms.common.ConnectionResult
-import com.google.android.gms.common.GoogleApiAvailability
+import com.google.android.gms.common.GoogleApiAvailabilityLight
 import java.io.BufferedReader
 import java.io.File
 import java.io.InputStreamReader
@@ -193,7 +193,7 @@ class WatchDog {
   }
 
   fun googlePlayServicesEnabled(context: Context, onlyAllowLatestVersion: Boolean): Boolean {
-    val status = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(context)
+    val status = GoogleApiAvailabilityLight.getInstance().isGooglePlayServicesAvailable(context)
     return if (onlyAllowLatestVersion) {
       status == ConnectionResult.SUCCESS
     } else {

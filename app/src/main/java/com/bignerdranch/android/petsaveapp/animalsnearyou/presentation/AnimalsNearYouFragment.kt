@@ -16,6 +16,7 @@ import com.bignerdranch.android.petsaveapp.core.domain.model.NoMoreAnimalsExcept
 import com.bignerdranch.android.petsaveapp.core.presentation.AnimalsAdapter
 import com.bignerdranch.android.petsaveapp.core.presentation.Event
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import dagger.hilt.android.AndroidEntryPoint
 import okio.IOException
 import retrofit2.HttpException
@@ -42,6 +43,12 @@ class AnimalsNearYouFragment : Fragment() {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
+
+    try {
+      throw NullPointerException()
+    } catch (exception: Exception) {
+      FirebaseCrashlytics.getInstance().recordException(exception)
+    }
 
     setupUI()
 
