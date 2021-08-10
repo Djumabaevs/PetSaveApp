@@ -8,5 +8,20 @@ object RemoteConfigUtil {
         remoteConfig = getFirebaseRemoteConfig(debug)
     }
 
+    private fun getFirebaseRemoteConfig(debug: Boolean):
+            FirebaseRemoteConfig {
+        val remoteConfig = Firebase.remoteConfig
+        val configSettings = remoteConfigSettings {
+            if (debug) {
+                minimumFetchIntervalInSeconds = 0
+            } else {
+                minimumFetchIntervalInSeconds = 60 * 60
+            }
+        }
+        remoteConfig.setConfigSettingsAsync(configSettings)
+        remoteConfig.setDefaultsAsync(DEFAULTS)
+        remoteConfig.fetchAndActivate()
+        return remoteConfig
+    }
 
 }
