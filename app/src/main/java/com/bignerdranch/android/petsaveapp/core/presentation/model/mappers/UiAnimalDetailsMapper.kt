@@ -1,6 +1,7 @@
 package com.bignerdranch.android.petsaveapp.core.presentation.model.mappers
 
 import com.bignerdranch.android.petsaveapp.core.domain.model.animal.AnimalWithDetails
+import com.bignerdranch.android.petsaveapp.core.presentation.model.UIAnimalDetailed
 import javax.inject.Inject
 
 class UiAnimalDetailsMapper @Inject constructor(): UiMapper<AnimalWithDetails, UIAnimalDetailed> {
