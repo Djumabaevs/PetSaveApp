@@ -44,11 +44,11 @@ class AnimalsNearYouFragment : Fragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
-    try {
+//    try {
       throw NullPointerException()
-    } catch (exception: Exception) {
-      FirebaseCrashlytics.getInstance().recordException(exception)
-    }
+//    } catch (exception: Exception) {
+//      FirebaseCrashlytics.getInstance().recordException(exception)
+//    }
 
     setupUI()
 
