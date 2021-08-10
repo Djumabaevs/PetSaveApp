@@ -89,6 +89,9 @@ dependencies {
     //Modules
     // Modules
     implementation project(":logging")
+
+    implementation project(":remoteconfig")
+
 //    implementation project(":sharing")
 //    api project(":sharing")
 //    api project(":logging")
