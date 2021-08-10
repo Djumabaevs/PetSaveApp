@@ -12,6 +12,8 @@ apply plugin: 'com.google.gms.google-services'
 
 apply plugin: 'com.google.firebase.crashlytics'
 
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
@@ -188,10 +190,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging:20.2.0'
 
     //Firebase
-    implementation platform('com.google.firebase:firebase-bom:26.1.1')
-    implementation 'com.google.firebase:firebase-config-ktx'
+    implementation 'com.google.firebase:firebase-bom:28.3.1'
+    implementation 'com.google.firebase:firebase-config-ktx:21.0.1'
 
     //Crashlytics
-    implementation 'com.google.firebase:firebase-crashlytics-ktx'
-    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx:18.2.1'
+    implementation 'com.google.firebase:firebase-analytics-ktx:19.0.0'
 }

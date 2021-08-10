@@ -7,16 +7,16 @@ import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
 class PetSaveApplication: Application() {
-
+    // initiate analytics, crashlytics, etc
     override fun onCreate() {
         super.onCreate()
 
-        RemoteConfigUtil.init(BuildConfig.DEBUG)
-
         initLogger()
+
+        RemoteConfigUtil.init(BuildConfig.DEBUG)
     }
 
     private fun initLogger() {
-        com.bignerdranch.android.logging.Logger.init()
+        Logger.init()
     }
 }

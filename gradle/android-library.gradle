@@ -9,7 +9,7 @@ android {
   defaultConfig {
     minSdkVersion rootProject.ext.minSdkVersion
     targetSdkVersion rootProject.ext.targetSdkVersion
-    testInstrumentationRunner "com.raywenderlich.android.petsave.common.HiltTestRunner"
+    testInstrumentationRunner "com.bignerdranch.android.petsaveapp.HiltTestRunner"
   }
 
   compileOptions {
@@ -47,6 +47,7 @@ dependencies {
   implementation fileTree(dir: 'libs', include: ['*.jar'])
 
   implementation project(":logging")
+  implementation project(":remoteconfig")
 
   // Kotlin
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
