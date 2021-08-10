@@ -8,6 +8,8 @@ apply plugin: 'kotlin-kapt'
 
 apply plugin: 'dagger.hilt.android.plugin'
 
+apply plugin: 'com.google.gms.google-services'
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
@@ -71,6 +73,7 @@ android {
 }
 
 dependencies {
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     //Modules
@@ -172,4 +175,7 @@ dependencies {
     implementation "androidx.security:security-crypto:$security_version"
     implementation "com.babylon.certificatetransparency:certificatetransparency-android:$babylonhealth_version"
     implementation 'com.google.firebase:firebase-messaging:20.2.0'
+
+    //Firebase
+    implementation platform('com.google.firebase:firebase-bom:28.3.1')
 }
