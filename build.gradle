@@ -4,9 +4,9 @@ buildscript {
 
     ext {
         kotlin_version = '1.4.20'
-        compileSdkVersion = 29
+        compileSdkVersion = 30
         targetSdkVersion = compileSdkVersion
-        minSdkVersion = 23
+        minSdkVersion = 28
 
         // Tutorial dependency versions
         androidx_hilt_version = "1.0.0-alpha02"
@@ -46,6 +46,7 @@ buildscript {
     repositories {
         google()
         jcenter()
+        mavenCentral()
     }
 
     dependencies {
@@ -65,6 +66,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        mavenCentral()
     }
 }
 

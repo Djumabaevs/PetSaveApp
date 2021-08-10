@@ -87,9 +87,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     //Modules
-    // Modules
     implementation project(":logging")
-
     implementation project(":remoteconfig")
 
 //    implementation project(":sharing")
@@ -190,7 +188,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging:20.2.0'
 
     //Firebase
-    implementation platform('com.google.firebase:firebase-bom:28.3.1')
+    implementation platform('com.google.firebase:firebase-bom:26.1.1')
+    implementation 'com.google.firebase:firebase-config-ktx'
 
     //Crashlytics
     implementation 'com.google.firebase:firebase-crashlytics-ktx'

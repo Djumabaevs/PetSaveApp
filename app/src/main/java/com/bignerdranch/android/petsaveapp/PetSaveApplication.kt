@@ -4,11 +4,14 @@ import android.app.Application
 import com.bignerdranch.android.logging.Logger
 import dagger.hilt.android.HiltAndroidApp
 
+
 @HiltAndroidApp
 class PetSaveApplication: Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+        RemoteConfigUtil.init(BuildConfig.DEBUG)
 
         initLogger()
     }
