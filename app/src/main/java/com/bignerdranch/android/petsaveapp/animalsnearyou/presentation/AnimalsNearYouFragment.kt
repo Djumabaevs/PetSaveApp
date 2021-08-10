@@ -45,7 +45,7 @@ class AnimalsNearYouFragment : Fragment() {
     super.onViewCreated(view, savedInstanceState)
 
 //    try {
-      throw NullPointerException()
+//      throw NullPointerException()
 //    } catch (exception: Exception) {
 //      FirebaseCrashlytics.getInstance().recordException(exception)
 //    }
