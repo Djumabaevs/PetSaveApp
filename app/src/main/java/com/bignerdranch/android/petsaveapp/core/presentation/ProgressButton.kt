@@ -1,5 +1,7 @@
 package com.bignerdranch.android.petsaveapp.core.presentation
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
@@ -117,6 +119,26 @@ class ProgressButton @JvmOverloads constructor(
             canvas.drawLine(x2, y2, x3, y3, progressPaint)
             canvas.restore()
         }
+    }
+
+    fun startLoading() {
+        loading = true
+        isClickable = false
+        widthAnimator = ValueAnimator.ofFloat(0f, 1f).apply {
+            addUpdateListener {
+                offset = (measuredWidth - measuredHeight) / 2f * it.animatedValue as Float
+                invalidate()
+            }
+            addListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator?) {
+                    super.onAnimationEnd(animation)
+                    // TODO: call startProgressAnimation()
+                    startProgressAnimation()
+                }
+            })
+            duration = 200
+        }
+        widthAnimator?.start()
     }
 
 }
