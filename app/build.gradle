@@ -196,4 +196,9 @@ dependencies {
     //Crashlytics
     implementation 'com.google.firebase:firebase-crashlytics-ktx:18.2.1'
     implementation 'com.google.firebase:firebase-analytics-ktx:19.0.0'
+
+    // Physics - based animations
+    implementation "androidx.dynamicanimation:dynamicanimation:1.0.0"
+
+    implementation "com.airbnb.android:lottie:3.4.2"
 }

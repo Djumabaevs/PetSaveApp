@@ -52,4 +52,11 @@
     <string name="report">Report</string>
     <string name="upload_photo">Upload Photo</string>
     <string name="secret_image">secret image</string>
+    <string name="good_boi_girl">Good boi/girl</string>
+    <string name="hundred_emoji">💯</string>
+    <string name="animal_details">Animal Details</string>
+    <string name="secret_doggo">Secret Doggo</string>
+    <string name="declawed">Declawed</string>
+    <string name="shots_current">Shots current</string>
+    <string name="adopt">Adopt</string>
 </resources>

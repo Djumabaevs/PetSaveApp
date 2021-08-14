@@ -211,7 +211,7 @@
 
       </com.google.android.material.chip.ChipGroup>
 
-      <com.raywenderlich.android.petsave.common.presentation.ProgressButton
+      <com.bignerdranch.android.petsaveapp.core.presentation.ProgressButton
         android:id="@+id/adopt_button"
         android:layout_width="match_parent"
         android:layout_height="40dp"
