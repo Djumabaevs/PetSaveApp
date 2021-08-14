@@ -2,6 +2,8 @@ package com.bignerdranch.android.petsaveapp.core
 
 import android.os.Bundle
 import android.util.Base64
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
 import androidx.activity.viewModels
@@ -29,6 +31,7 @@ import com.bignerdranch.android.petsaveapp.core.utils.Timing
 import com.bignerdranch.android.petsaveapp.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.biometric.BiometricManager
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.File
@@ -98,6 +101,28 @@ class MainActivity : AppCompatActivity() {
   private fun setupBottomNav() {
     bottom_navigation.visibility = View.GONE
     binding.bottomNavigation.setupWithNavController(navController)
+  }
+
+  override fun onCreateOptionsMenu(menu: Menu): Boolean {
+    val inflater = menuInflater
+    inflater.inflate(R.menu.theme_options, menu)
+    return true
+  }
+
+  override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    val themeMode = when (item.itemId) {
+      R.id.light_theme -> {
+        AppCompatDelegate.MODE_NIGHT_NO
+      }
+      R.id.dark_theme -> {
+        AppCompatDelegate.MODE_NIGHT_YES
+      }
+      else -> {
+        AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+      }
+    }
+    AppCompatDelegate.setDefaultNightMode(themeMode)
+    return true
   }
 
   private fun setupWorkingFiles() {
