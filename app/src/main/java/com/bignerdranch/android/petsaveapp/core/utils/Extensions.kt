@@ -1,5 +1,8 @@
 package com.bignerdranch.android.petsaveapp.core.utils
 
+import android.content.Context
+import android.graphics.Paint
+import android.graphics.Rect
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -52,5 +55,13 @@ fun Boolean?.toEmoji() = if (this != null) {
     String(Character.toChars(if (this) CHECK_EMOJI else CROSS_EMOJI))
 } else {
     String(Character.toChars(QUESTION_EMOJI))
+}
+
+fun Context.dpToPx(dp: Float) = this.getResources().getDisplayMetrics().density * dp
+
+fun Paint.getTextWidth(string: String): Float {
+    val rect = Rect()
+    this.getTextBounds(string, 0, string.length, rect)
+    return rect.width().toFloat()
 }
 
