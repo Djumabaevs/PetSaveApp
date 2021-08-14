@@ -163,6 +163,17 @@ class ProgressButton @JvmOverloads constructor(
         }
         rotationAnimator?.start()
     }
+    fun done() {
+        loading = false
+        drawTick = true
+        rotationAnimator?.cancel()
+        invalidate()
+    }
 
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        widthAnimator?.cancel()
+        rotationAnimator?.cancel()
+    }
 
 }
