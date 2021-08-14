@@ -3,18 +3,19 @@ package com.bignerdranch.android.petsaveapp.common.data
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.platform.app.InstrumentationRegistry
-import com.bignerdranch.android.petsaveapp.common.data.api.PetFinderApi
-import com.bignerdranch.android.petsaveapp.common.data.api.model.mappers.ApiAnimalMapper
-import com.bignerdranch.android.petsaveapp.common.data.api.model.mappers.ApiPaginationMapper
 import com.bignerdranch.android.petsaveapp.common.data.api.utils.FakeServer
-import com.bignerdranch.android.petsaveapp.common.data.cache.Cache
-import com.bignerdranch.android.petsaveapp.common.data.cache.PetSaveDatabase
-import com.bignerdranch.android.petsaveapp.common.data.cache.RoomCache
-import com.bignerdranch.android.petsaveapp.common.data.di.CacheModule
-import com.bignerdranch.android.petsaveapp.common.data.di.PreferencesModule
 import com.bignerdranch.android.petsaveapp.common.data.preferences.FakePreferences
-import com.bignerdranch.android.petsaveapp.common.data.preferences.Preferences
-import com.bignerdranch.android.petsaveapp.common.domain.repositories.AnimalRepository
+import com.bignerdranch.android.petsaveapp.core.data.PetFinderAnimalRepository
+import com.bignerdranch.android.petsaveapp.core.data.api.PetFinderApi
+import com.bignerdranch.android.petsaveapp.core.data.api.model.mappers.ApiAnimalMapper
+import com.bignerdranch.android.petsaveapp.core.data.api.model.mappers.ApiPaginationMapper
+import com.bignerdranch.android.petsaveapp.core.data.cache.Cache
+import com.bignerdranch.android.petsaveapp.core.data.cache.PetSaveDatabase
+import com.bignerdranch.android.petsaveapp.core.data.cache.RoomCache
+import com.bignerdranch.android.petsaveapp.core.data.di.CacheModule
+import com.bignerdranch.android.petsaveapp.core.data.di.PreferencesModule
+import com.bignerdranch.android.petsaveapp.core.data.preferences.Preferences
+import com.bignerdranch.android.petsaveapp.core.domain.repositories.AnimalRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,7 +23,6 @@ import dagger.hilt.android.testing.BindValue
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.UninstallModules
-import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
@@ -65,7 +65,7 @@ class PetFinderAnimalRepositoryTest {
 
     @BindValue
     @JvmField
-    val preferences :Preferences = FakePreferences()
+    val preferences : Preferences = FakePreferences()
 
     @Before
     fun setUp() {

@@ -18,9 +18,8 @@ import com.bignerdranch.android.petsaveapp.R
 import com.bignerdranch.android.petsaveapp.RxImmediateSchedulerRule
 import com.bignerdranch.android.petsaveapp.TestCoroutineRule
 import com.bignerdranch.android.petsaveapp.common.data.FakeRepository
-import com.bignerdranch.android.petsaveapp.common.data.di.CacheModule
-import com.bignerdranch.android.petsaveapp.common.data.di.PreferencesModule
-import com.bignerdranch.android.petsaveapp.common.di.ActivityRetainedModule
+import com.bignerdranch.android.petsaveapp.core.data.di.CacheModule
+import com.bignerdranch.android.petsaveapp.core.data.di.PreferencesModule
 import com.bignerdranch.android.petsaveapp.launchFragmentInHiltContainer
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest

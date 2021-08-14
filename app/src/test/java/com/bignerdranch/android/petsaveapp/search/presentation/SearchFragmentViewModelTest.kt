@@ -4,9 +4,8 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.bignerdranch.android.petsaveapp.RxImmediateSchedulerRule
 import com.bignerdranch.android.petsaveapp.TestCoroutineRule
 import com.bignerdranch.android.petsaveapp.common.data.FakeRepository
-import com.bignerdranch.android.petsaveapp.common.presentation.Event
-import com.bignerdranch.android.petsaveapp.common.presentation.model.mappers.UiAnimalMapper
-import com.bignerdranch.android.petsaveapp.common.utils.DispatchersProvider
+import com.bignerdranch.android.petsaveapp.core.presentation.model.mappers.UiAnimalMapper
+import com.bignerdranch.android.petsaveapp.core.utils.DispatchersProvider
 import com.bignerdranch.android.petsaveapp.search.domain.usecases.GetSearchFilters
 import com.bignerdranch.android.petsaveapp.search.domain.usecases.SearchAnimals
 import com.bignerdranch.android.petsaveapp.search.domain.usecases.SearchAnimalsRemotely

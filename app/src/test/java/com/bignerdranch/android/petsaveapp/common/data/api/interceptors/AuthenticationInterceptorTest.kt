@@ -1,10 +1,12 @@
 package com.bignerdranch.android.petsaveapp.common.data.api.interceptors
 
 import android.os.Build
-import com.bignerdranch.android.petsaveapp.common.data.api.ApiConstants
-import com.bignerdranch.android.petsaveapp.common.data.api.ApiParameters
 import com.bignerdranch.android.petsaveapp.common.data.api.utils.JsonReader
-import com.bignerdranch.android.petsaveapp.common.data.preferences.Preferences
+
+import com.bignerdranch.android.petsaveapp.core.data.api.ApiConstants
+import com.bignerdranch.android.petsaveapp.core.data.api.ApiParameters
+import com.bignerdranch.android.petsaveapp.core.data.api.interceptors.AuthenticationInterceptor
+import com.bignerdranch.android.petsaveapp.core.data.preferences.Preferences
 import com.google.common.truth.Truth.assertThat
 import okhttp3.OkHttpClient
 import okhttp3.Request

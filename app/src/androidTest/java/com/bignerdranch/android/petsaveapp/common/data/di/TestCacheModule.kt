@@ -2,21 +2,21 @@ package com.bignerdranch.android.petsaveapp.common.data.di
 
 import androidx.room.Room
 import androidx.test.platform.app.InstrumentationRegistry
-import com.bignerdranch.android.petsaveapp.common.data.cache.Cache
-import com.bignerdranch.android.petsaveapp.common.data.cache.PetSaveDatabase
-import com.bignerdranch.android.petsaveapp.common.data.cache.RoomCache
-import com.bignerdranch.android.petsaveapp.common.data.cache.daos.AnimalsDao
-import com.bignerdranch.android.petsaveapp.common.data.cache.daos.OrganizationsDao
+import com.bignerdranch.android.petsaveapp.core.data.cache.Cache
+import com.bignerdranch.android.petsaveapp.core.data.cache.PetSaveDatabase
+import com.bignerdranch.android.petsaveapp.core.data.cache.RoomCache
+import com.bignerdranch.android.petsaveapp.core.data.cache.daos.AnimalsDao
+import com.bignerdranch.android.petsaveapp.core.data.cache.daos.OrganizationsDao
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
+import dagger.hilt.android.components.ApplicationComponent
 import javax.inject.Singleton
 
 
 @Module
-@InstallIn(SingletonComponent::class)
+@InstallIn(ApplicationComponent::class)
 abstract class TestCacheModule {
 
     @Binds

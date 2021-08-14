@@ -1,5 +1,8 @@
 package com.bignerdranch.android.petsaveapp.common.data.preferences
 
+import com.bignerdranch.android.petsaveapp.core.data.preferences.Preferences
+import com.bignerdranch.android.petsaveapp.core.data.preferences.PreferencesConstants
+
 class FakePreferences : Preferences {
     private val preferences = mutableMapOf<String, Any>()
 

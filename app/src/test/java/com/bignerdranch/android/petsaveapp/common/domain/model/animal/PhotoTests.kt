@@ -1,5 +1,6 @@
 package com.bignerdranch.android.petsaveapp.common.domain.model.animal
 
+import com.bignerdranch.android.petsaveapp.core.domain.model.animal.Media
 import org.junit.Assert
 import org.junit.Assert.assertEquals
 import org.junit.Test

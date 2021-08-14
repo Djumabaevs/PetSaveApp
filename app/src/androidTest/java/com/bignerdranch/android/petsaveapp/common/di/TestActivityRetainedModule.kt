@@ -1,9 +1,9 @@
 package com.bignerdranch.android.petsaveapp.common.di
 
 import com.bignerdranch.android.petsaveapp.common.data.FakeRepository
-import com.bignerdranch.android.petsaveapp.common.domain.repositories.AnimalRepository
-import com.bignerdranch.android.petsaveapp.common.utils.CoroutineDispatchersProvider
-import com.bignerdranch.android.petsaveapp.common.utils.DispatchersProvider
+import com.bignerdranch.android.petsaveapp.core.domain.repositories.AnimalRepository
+import com.bignerdranch.android.petsaveapp.core.utils.CoroutineDispatchersProvider
+import com.bignerdranch.android.petsaveapp.core.utils.DispatchersProvider
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
