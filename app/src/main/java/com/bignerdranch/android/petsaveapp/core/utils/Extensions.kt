@@ -35,3 +35,13 @@ inline fun CoroutineScope.createExceptionHandler(
     action(throwable)
   }
 }
+
+/**
+ * Extension that returns Yes if a Boolean is true, else No
+ */
+fun Boolean.toEnglish() = if (this) "Yes" else "No"
+
+const val CHECK_EMOJI = 0x2714
+const val CROSS_EMOJI = 0x274C
+const val QUESTION_EMOJI = 0x2753
+
