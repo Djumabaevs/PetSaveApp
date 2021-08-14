@@ -11,6 +11,8 @@ import android.graphics.RectF
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.LinearInterpolator
 import com.bignerdranch.android.petsaveapp.R
 import com.bignerdranch.android.petsaveapp.core.utils.dpToPx
 import com.bignerdranch.android.petsaveapp.core.utils.getTextWidth
@@ -140,5 +142,27 @@ class ProgressButton @JvmOverloads constructor(
         }
         widthAnimator?.start()
     }
+
+    private fun startProgressAnimation() {
+        rotationAnimator = ValueAnimator.ofFloat(0f, 340f).apply {
+            addUpdateListener {
+                startAngle = it.animatedValue as Float
+                invalidate()
+            }
+            duration = 600
+            interpolator = LinearInterpolator()
+            repeatCount = Animation.INFINITE
+            addListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator?) {
+                    super.onAnimationEnd(animation)
+                    loading = false
+                    drawTick = true
+                    invalidate()
+                }
+            })
+        }
+        rotationAnimator?.start()
+    }
+
 
 }
