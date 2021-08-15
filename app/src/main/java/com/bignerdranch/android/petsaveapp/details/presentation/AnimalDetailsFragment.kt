@@ -10,6 +10,7 @@ import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.bignerdranch.android.petsaveapp.core.presentation.model.UIAnimalDetailed
 import com.bignerdranch.android.petsaveapp.databinding.FragmentDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -86,4 +87,26 @@ class AnimalDetailsFragment: Fragment() {
         val event = AnimalDetailsEvent.LoadAnimalDetails(animalId!!)
         viewModel.handleEvent(event)
     }
+
+    private fun observerState() {
+        viewModel.state.observe(viewLifecycleOwner) { state ->
+            when(state) {
+                is AnimalDetailsViewState.Loading -> {
+                    displayLoading()
+                }
+                is AnimalDetailsViewState.Failure -> {
+                    displayError()
+                }
+                is AnimalDetailsViewState.AnimalDetails -> {
+                    displayPetDetails(state.animal, state.adopted)
+                }
+            }
+        }
+    }
+
+    private fun displayPetDetails(animalDetails: UIAnimalDetailed, adopted: Boolean) {}
+
+    private fun displayError() {}
+
+    private fun displayLoading() {}
 }
