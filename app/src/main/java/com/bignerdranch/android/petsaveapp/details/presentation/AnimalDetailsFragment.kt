@@ -167,8 +167,8 @@ class AnimalDetailsFragment: Fragment() {
 
         callFlingYAnimation.addEndListener { _, _, _, _ ->
             if (areViewsOverlapping(binding.call, binding.image)) {
-//                val action = AnimalDetailsFragmentDirections.actionDetailsToSecret()
-//                findNavController().navigate(action)
+                val action = AnimalDetailsFragmentDirections.actionAnimalDetailsFragmentToSecretFragment()
+                findNavController().navigate(action)
             }
         }
 

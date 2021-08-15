@@ -15,6 +15,7 @@ import com.bignerdranch.android.petsaveapp.search.domain.model.SearchParameters
 import com.bignerdranch.android.petsaveapp.search.domain.model.SearchResults
 import dagger.hilt.android.scopes.ActivityRetainedScoped
 import io.reactivex.Flowable
+import io.reactivex.Single
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import javax.inject.Inject
@@ -111,4 +112,8 @@ class PetFinderAnimalRepository @Inject constructor(
         apiPaginationMapper.mapToDomain(apiPagination)
     )
   }
+
+    override fun getAnimal(animalId: Long): Single<AnimalWithDetails> {
+        TODO("Not yet implemented")
+    }
 }

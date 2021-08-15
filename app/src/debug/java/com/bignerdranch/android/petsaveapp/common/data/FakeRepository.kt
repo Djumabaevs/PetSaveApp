@@ -14,6 +14,7 @@ import com.bignerdranch.android.petsaveapp.search.domain.model.SearchResults
 import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable
 import io.reactivex.Observable
+import io.reactivex.Single
 import org.threeten.bp.LocalDateTime
 import javax.inject.Inject
 
@@ -178,6 +179,10 @@ class FakeRepository @Inject constructor() : AnimalRepository {
                 matches,
                 Pagination(currentPage = 1, totalPages = 1)
         )
+    }
+
+    override fun getAnimal(animalId: Long): Single<AnimalWithDetails> {
+        TODO("Not yet implemented")
     }
 
 
