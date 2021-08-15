@@ -1,13 +1,13 @@
 package com.bignerdranch.android.petsaveapp.details.presentation
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
 import android.graphics.Rect
+import android.graphics.drawable.Animatable
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.annotation.RawRes
 import androidx.core.view.isVisible
 import androidx.dynamicanimation.animation.DynamicAnimation
@@ -16,6 +16,7 @@ import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.airbnb.lottie.LottieProperty
 import com.airbnb.lottie.model.KeyPath
 import com.bignerdranch.android.petsaveapp.R
@@ -116,6 +117,7 @@ class AnimalDetailsFragment: Fragment() {
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun displayPetDetails(animalDetails: UIAnimalDetailed, adopted: Boolean) {
         binding.call.scaleX = 0.6f
         binding.call.scaleY = 0.6f
@@ -129,6 +131,55 @@ class AnimalDetailsFragment: Fragment() {
         binding.specialNeeds.text = animalDetails.specialNeeds.toEmoji()
         binding.declawed.text = animalDetails.declawed.toEmoji()
         binding.shotsCurrent.text = animalDetails.shotsCurrent.toEmoji()
+
+        val doubleTapGestureListener = object: GestureDetector.SimpleOnGestureListener() {
+            override fun onDoubleTap(e: MotionEvent): Boolean {
+                (binding.heartImage.drawable as Animatable?)?.start()
+                return true
+            }
+
+            override fun onDown(e: MotionEvent) = true
+        }
+        val doubleTapGestureDetector = GestureDetector(requireContext(), doubleTapGestureListener)
+
+        binding.image.setOnTouchListener { v, event ->
+            doubleTapGestureDetector.onTouchEvent(event)
+        }
+
+        callScaleXSpringAnimation.animateToFinalPosition(FLING_SCALE)
+        callScaleYSpringAnimation.animateToFinalPosition(FLING_SCALE)
+
+        val flingGestureListener = object: GestureDetector.SimpleOnGestureListener() {
+            override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float,
+                                 velocityY: Float): Boolean {
+                callFlingXAnimation.setStartVelocity(velocityX).start()
+                callFlingYAnimation.setStartVelocity(velocityY).start()
+                return true
+            }
+
+            override fun onDown(e: MotionEvent) = true
+        }
+        val flingGestureDetector = GestureDetector(requireContext(), flingGestureListener)
+
+        binding.call.setOnTouchListener { v, event ->
+            flingGestureDetector.onTouchEvent(event)
+        }
+
+        callFlingYAnimation.addEndListener { _, _, _, _ ->
+            if (areViewsOverlapping(binding.call, binding.image)) {
+//                val action = AnimalDetailsFragmentDirections.actionDetailsToSecret()
+//                findNavController().navigate(action)
+            }
+        }
+
+        binding.adoptButton.setOnClickListener {
+            binding.adoptButton.startLoading()
+            viewModel.handleEvent(AnimalDetailsEvent.AdoptAnimal)
+        }
+
+        if (adopted) {
+            binding.adoptButton.done()
+        }
     }
 
     private fun displayError() {
