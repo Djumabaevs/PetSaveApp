@@ -1,5 +1,9 @@
 package com.bignerdranch.android.petsaveapp.details.presentation
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.dynamicanimation.animation.DynamicAnimation
 import androidx.dynamicanimation.animation.FlingAnimation
 import androidx.dynamicanimation.animation.SpringAnimation
@@ -60,5 +64,26 @@ class AnimalDetailsFragment: Fragment() {
             setMinValue(0f)
             setMaxValue(binding.root.height.toFloat() - binding.call.width.toFloat())
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        animalId = requireArguments().getLong(ANIMAL_ID)
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        _binding = FragmentDetailsBinding.inflate(inflater, container, false)
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        observerState()
+        val event = AnimalDetailsEvent.LoadAnimalDetails(animalId!!)
+        viewModel.handleEvent(event)
     }
 }
