@@ -6,7 +6,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bignerdranch.android.petsaveapp.core.presentation.model.mappers.UiAnimalDetailsMapper
 import com.bignerdranch.android.petsaveapp.details.domain.usecases.AnimalDetails
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
+import io.reactivex.schedulers.Schedulers
+import java.util.concurrent.TimeUnit
 
 class AnimalDetailsViewModel @ViewModelInject constructor(
     private val uiAnimalDetailsMapper: UiAnimalDetailsMapper,
@@ -22,7 +26,20 @@ class AnimalDetailsViewModel @ViewModelInject constructor(
     }
 
     fun handleEvent(event: AnimalDetailsEvent) {
-        is AnimalDetailsEvent.LoadAnimalDetails -> subs
-        is AnimalDetailsEvent.AdoptAnimal -> ado
+      when(event) {
+          is AnimalDetailsEvent.LoadAnimalDetails -> subscribeToAnimalDetails(event.animalId)
+          is AnimalDetailsEvent.AdoptAnimal -> ado
+      }
+    }
+
+    private fun subscribeToAnimalDetails(animalId: Long) {
+        animalDetails(animalId)
+            .delay(2L, TimeUnit.SECONDS)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                { onAnimalDetails(it) },
+                { onFailure(it) }
+            ).addTo(compositeDisposable)
     }
 }
