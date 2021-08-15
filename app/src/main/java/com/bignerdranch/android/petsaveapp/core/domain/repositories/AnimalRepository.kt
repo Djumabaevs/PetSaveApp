@@ -6,6 +6,7 @@ import com.bignerdranch.android.petsaveapp.core.domain.model.pagination.Paginate
 import com.bignerdranch.android.petsaveapp.search.domain.model.SearchParameters
 import com.bignerdranch.android.petsaveapp.search.domain.model.SearchResults
 import io.reactivex.Flowable
+import io.reactivex.Single
 
 
 interface AnimalRepository {
@@ -22,4 +23,8 @@ interface AnimalRepository {
       searchParameters: SearchParameters,
       numberOfItems: Int
   ): PaginatedAnimals
+
+    fun getAnimal(
+        animalId: Long
+    ): Single<AnimalWithDetails>
 }

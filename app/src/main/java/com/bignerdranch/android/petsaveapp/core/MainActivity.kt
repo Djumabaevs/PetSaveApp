@@ -103,28 +103,6 @@ class MainActivity : AppCompatActivity() {
     binding.bottomNavigation.setupWithNavController(navController)
   }
 
-  override fun onCreateOptionsMenu(menu: Menu): Boolean {
-    val inflater = menuInflater
-    inflater.inflate(R.menu.theme_options, menu)
-    return true
-  }
-
-  override fun onOptionsItemSelected(item: MenuItem): Boolean {
-    val themeMode = when (item.itemId) {
-      R.id.light_theme -> {
-        AppCompatDelegate.MODE_NIGHT_NO
-      }
-      R.id.dark_theme -> {
-        AppCompatDelegate.MODE_NIGHT_YES
-      }
-      else -> {
-        AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
-      }
-    }
-    AppCompatDelegate.setDefaultNightMode(themeMode)
-    return true
-  }
-
   private fun setupWorkingFiles() {
     workingFile = File(filesDir.absolutePath + File.separator +
         FileConstants.DATA_SOURCE_FILE_NAME)
@@ -275,6 +253,28 @@ class MainActivity : AppCompatActivity() {
       success = serverPublicKeyString.isNotEmpty()
     }
     return success
+  }
+
+  override fun onCreateOptionsMenu(menu: Menu): Boolean {
+    val inflater = menuInflater
+    inflater.inflate(R.menu.theme_options, menu)
+    return true
+  }
+
+  override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    val themeMode = when (item.itemId) {
+      R.id.light_theme -> {
+        AppCompatDelegate.MODE_NIGHT_NO
+      }
+      R.id.dark_theme -> {
+        AppCompatDelegate.MODE_NIGHT_YES
+      }
+      else -> {
+        AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+      }
+    }
+    AppCompatDelegate.setDefaultNightMode(themeMode)
+    return true
   }
 
   override fun onPause() {
