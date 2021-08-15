@@ -114,6 +114,12 @@ class PetFinderAnimalRepository @Inject constructor(
   }
 
     override fun getAnimal(animalId: Long): Single<AnimalWithDetails> {
-        TODO("Not yet implemented")
+        return cache.getAnimal(animalId)
+            .flatMap { animal ->
+                cache.getOrganization(animal.animal.organizationId)
+                    .map {
+                        animal.animal.toDomain(animal.photos, animal.videos, animal.tags, it)
+                    }
+            }
     }
 }
