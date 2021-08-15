@@ -40,10 +40,12 @@
       android:name="com.bignerdranch.android.petsaveapp.report.presentation.ReportDetailFragment"
       android:label="@string/report_screen_label"
       tools:layout="@layout/fragment_search" />
+
   <fragment
       android:id="@+id/animalDetailsFragment"
       android:name="com.bignerdranch.android.petsaveapp.details.presentation.AnimalDetailsFragment"
-      android:label="AnimalDetailsFragment" >
+      android:label="AnimalDetailsFragment"
+      tools:layout="@layout/fragment_details">
     <action
         android:id="@+id/action_animalDetailsFragment_to_secretFragment"
         app:destination="@id/secretFragment" />
@@ -51,8 +53,10 @@
         android:name="id"
         app:argType="long" />
   </fragment>
+
   <fragment
       android:id="@+id/secretFragment"
       android:name="com.bignerdranch.android.petsaveapp.easteregg.SecretFragment"
-      android:label="SecretFragment" />
+      android:label="SecretFragment"
+      tools:layout="@layout/fragment_secret"/>
 </navigation>

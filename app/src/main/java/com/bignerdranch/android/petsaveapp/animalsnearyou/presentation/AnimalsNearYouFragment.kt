@@ -10,9 +10,11 @@ import androidx.fragment.app.activityViewModels
 import com.bignerdranch.android.petsaveapp.databinding.FragmentAnimalsNearYouBinding
 import androidx.lifecycle.Observer
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.petsaveapp.core.domain.model.NoMoreAnimalsException
+import com.bignerdranch.android.petsaveapp.core.presentation.AnimalClickListener
 import com.bignerdranch.android.petsaveapp.core.presentation.AnimalsAdapter
 import com.bignerdranch.android.petsaveapp.core.presentation.Event
 import com.google.android.material.snackbar.Snackbar
@@ -66,7 +68,14 @@ class AnimalsNearYouFragment : Fragment() {
   }
 
   private fun createAdapter(): AnimalsAdapter {
-    return AnimalsAdapter()
+    return AnimalsAdapter().apply {
+      setOnAnimalClickListener(object: AnimalClickListener {
+        override fun onClick(animalId: Long) {
+          val action = AnimalsNearYouFragmentDirections.actionAnimalsNearYouToAnimalDetailsFragment(animalId)
+          findNavController().navigate(action)
+        }
+      })
+    }
   }
 
   private fun setupRecyclerView(animalsNearYouAdapter: AnimalsAdapter) {
