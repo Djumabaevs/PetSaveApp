@@ -1,17 +1,26 @@
 package com.bignerdranch.android.petsaveapp.details.presentation
 
+import android.graphics.Color
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
+import android.graphics.Rect
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RawRes
 import androidx.dynamicanimation.animation.DynamicAnimation
 import androidx.dynamicanimation.animation.FlingAnimation
 import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.airbnb.lottie.LottieProperty
+import com.airbnb.lottie.model.KeyPath
+import com.bignerdranch.android.petsaveapp.R
 import com.bignerdranch.android.petsaveapp.core.presentation.model.UIAnimalDetailed
 import com.bignerdranch.android.petsaveapp.databinding.FragmentDetailsBinding
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -106,7 +115,54 @@ class AnimalDetailsFragment: Fragment() {
 
     private fun displayPetDetails(animalDetails: UIAnimalDetailed, adopted: Boolean) {}
 
-    private fun displayError() {}
+    private fun displayError() {
+        startAnimation(R.raw.lazy_cat)
+        binding.scrollView.isVisible = false
+        Snackbar.make(requireView(), R.string.an_error_occurred, Snackbar.LENGTH_SHORT).show()
+    }
 
-    private fun displayLoading() {}
+    private fun displayLoading() {
+        startAnimation(R.raw.happy_dog)
+        binding.scrollView.isVisible = false
+    }
+
+    private fun startAnimation(@RawRes animationRes: Int) {
+        binding.loader.apply {
+            isVisible = true
+            setMinFrame(50)
+            setMaxFrame(112)
+            speed = 1.2f
+            setAnimation(animationRes)
+            playAnimation()
+        }
+        binding.loader.addValueCallback(
+            KeyPath("icon_circle", "**"),
+            LottieProperty.COLOR_FILTER,
+            {
+                PorterDuffColorFilter(Color.LTGRAY, PorterDuff.Mode.SRC_ATOP)
+            }
+        )
+    }
+
+    private fun stopAnimation() {
+        binding.loader.apply {
+            cancelAnimation()
+            isVisible = false
+        }
+    }
+
+    private fun areViewsOverlapping(view1: View, view2: View): Boolean {
+        val firstRect = Rect()
+        view1.getHitRect(firstRect)
+
+        val secondRect = Rect()
+        view2.getHitRect(secondRect)
+
+        return Rect.intersects(firstRect, secondRect)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
