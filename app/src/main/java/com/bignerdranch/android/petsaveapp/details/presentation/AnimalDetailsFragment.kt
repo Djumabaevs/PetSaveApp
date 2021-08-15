@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RawRes
+import androidx.core.view.isVisible
 import androidx.dynamicanimation.animation.DynamicAnimation
 import androidx.dynamicanimation.animation.FlingAnimation
 import androidx.dynamicanimation.animation.SpringAnimation
@@ -19,6 +20,8 @@ import com.airbnb.lottie.LottieProperty
 import com.airbnb.lottie.model.KeyPath
 import com.bignerdranch.android.petsaveapp.R
 import com.bignerdranch.android.petsaveapp.core.presentation.model.UIAnimalDetailed
+import com.bignerdranch.android.petsaveapp.core.utils.setImage
+import com.bignerdranch.android.petsaveapp.core.utils.toEmoji
 import com.bignerdranch.android.petsaveapp.databinding.FragmentDetailsBinding
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -113,7 +116,20 @@ class AnimalDetailsFragment: Fragment() {
         }
     }
 
-    private fun displayPetDetails(animalDetails: UIAnimalDetailed, adopted: Boolean) {}
+    private fun displayPetDetails(animalDetails: UIAnimalDetailed, adopted: Boolean) {
+        binding.call.scaleX = 0.6f
+        binding.call.scaleY = 0.6f
+        binding.call.isVisible = true
+        binding.scrollView.isVisible = true
+        stopAnimation()
+        binding.name.text = animalDetails.name
+        binding.description.text = animalDetails.description
+        binding.image.setImage(animalDetails.photo)
+        binding.sprayedNeutered.text = animalDetails.sprayNeutered.toEmoji()
+        binding.specialNeeds.text = animalDetails.specialNeeds.toEmoji()
+        binding.declawed.text = animalDetails.declawed.toEmoji()
+        binding.shotsCurrent.text = animalDetails.shotsCurrent.toEmoji()
+    }
 
     private fun displayError() {
         startAnimation(R.raw.lazy_cat)
