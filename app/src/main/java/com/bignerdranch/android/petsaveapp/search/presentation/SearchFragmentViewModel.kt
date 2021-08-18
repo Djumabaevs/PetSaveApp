@@ -140,7 +140,8 @@ class SearchFragmentViewModel @ViewModelInject constructor(
   }
 
   private fun setSearchingState() {
-    _state.value = state.value!!.copy(noResultsState = false)
+//    _state.value = state.value!!.copy(noResultsState = false)
+    _state.value = state.value!!.updateToSearching()
   }
 
   private fun setNoSearchQueryStateIf() {
