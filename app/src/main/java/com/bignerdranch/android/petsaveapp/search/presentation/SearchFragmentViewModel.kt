@@ -57,6 +57,7 @@ class SearchFragmentViewModel @ViewModelInject constructor(
   fun handleEvents(event: SearchEvent) {
     when(event) {
       is SearchEvent.PrepareForSearch -> prepareForSearch()
+      else -> onSearchParametersUpdate(event)
       is SearchEvent.QueryInput -> updateQuery(event.input)
       is SearchEvent.AgeValueSelected -> updateAgeValue(event.age)
       is SearchEvent.TypeValueSelected -> updateTypeValue(event.type)
