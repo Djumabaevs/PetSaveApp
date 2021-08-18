@@ -76,6 +76,12 @@ class SearchFragmentViewModel @ViewModelInject constructor(
     }
   }
 
+  private fun resetStateIfNoRemoteResults() {
+    if (state.value!!.isInNoSearchResultsState()) {
+      _state.value = state.value!!.updateToSearching()
+    }
+  }
+
   private fun prepareForSearch() {
     loadMenuValues()
     setupSearchSubscription()
