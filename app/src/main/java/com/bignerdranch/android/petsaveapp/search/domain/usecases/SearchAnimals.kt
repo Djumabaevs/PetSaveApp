@@ -18,23 +18,36 @@ class SearchAnimals @Inject constructor(
     private val animalRepository: AnimalRepository
 ) {
 
-  operator fun invoke(
-      querySubject: BehaviorSubject<String>,
-      ageSubject: BehaviorSubject<String>,
-      typeSubject: BehaviorSubject<String>
-  ): Flowable<SearchResults> {
-    val query = querySubject
-        .debounce(500L, TimeUnit.MILLISECONDS)
-        .filter { it.length >= 2 }
-        .distinctUntilChanged()
+    companion object {
+        private const val UI_EMPTY_VALUE = "Any"
+    }
 
-    return Observable.combineLatest(query, ageSubject, typeSubject, combiningFunction)
-        .toFlowable(BackpressureStrategy.BUFFER)
-        .switchMap {
-            animalRepository.searchCachedAnimalsBy(SearchParameters(it.first, it.second, it.third))
-        }
-  }
+    operator fun invoke(
+        querySubject: BehaviorSubject<String>,
+        ageSubject: BehaviorSubject<String>,
+        typeSubject: BehaviorSubject<String>
+    ): Flowable<SearchResults> {
+        val query = querySubject
+            .debounce(500L, TimeUnit.MILLISECONDS)
+            .map { it.trim() }
+            .filter { it.length >= 2 || it.isEmpty() }
+            .distinctUntilChanged()
 
-  private val combiningFunction: Function3<String, String, String, Triple<String, String, String>>
-    get() = Function3 {query, age, type -> Triple(query, age, type) }
+        val age = ageSubject.replaceUIEmptyValue()
+        val type = typeSubject.replaceUIEmptyValue()
+
+        return Observable.combineLatest(query, age, type, combiningFunction)
+            .toFlowable(BackpressureStrategy.LATEST)
+            .filter { it.name.isNotEmpty() }
+            .switchMap { parameters: SearchParameters ->
+                animalRepository.searchCachedAnimalsBy(parameters)
+            }
+    }
+
+    private val combiningFunction: Function3<String, String, String, SearchParameters>
+        get() = Function3 {query, age, type -> SearchParameters(query, age, type) }
+
+    private fun BehaviorSubject<String>.replaceUIEmptyValue(): Observable<String> {
+        return map { if (it == UI_EMPTY_VALUE) "" else it }
+    }
 }
