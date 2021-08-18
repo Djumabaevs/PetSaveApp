@@ -219,10 +219,15 @@ class SearchFragmentViewModel @ViewModelInject constructor(
   }
 
   private fun onFailure(throwable: Throwable) {
+//    _state.value = if (throwable is NoMoreAnimalsException) {
+//      state.value!!.copy(searchingRemotely = false, noResultsState = true)
+//    } else {
+//      state.value!!.copy(failure = Event(throwable))
+//    }
     _state.value = if (throwable is NoMoreAnimalsException) {
-      state.value!!.copy(searchingRemotely = false, noResultsState = true)
+      state.value!!.updateToNoResultsAvailable()
     } else {
-      state.value!!.copy(failure = Event(throwable))
+      state.value!!.updateToHasFailure(throwable)
     }
 
   }
