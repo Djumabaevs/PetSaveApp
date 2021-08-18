@@ -183,11 +183,13 @@ class SearchFragmentViewModel @ViewModelInject constructor(
   }
 
   private fun onEmptyCacheResults(searchParameters: SearchParameters) {
+//    searchRemotely(searchParameters)
+//    _state.value = state.value!!.copy(
+//        searchingRemotely = true,
+//        searchResults = emptyList()
+//    )
+    _state.value = state.value!!.updateToSearchingRemotely()
     searchRemotely(searchParameters)
-    _state.value = state.value!!.copy(
-        searchingRemotely = true,
-        searchResults = emptyList()
-    )
   }
 
   private fun searchRemotely(searchParameters: SearchParameters) {
