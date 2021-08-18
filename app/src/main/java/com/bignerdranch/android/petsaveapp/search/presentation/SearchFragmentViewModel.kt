@@ -145,11 +145,12 @@ class SearchFragmentViewModel @ViewModelInject constructor(
   }
 
   private fun setNoSearchQueryStateIf() {
-    _state.value = state.value!!.copy(
-        noSearchQueryState = true,
-        searchResults = emptyList(),
-        noResultsState = false
-    )
+//    _state.value = state.value!!.copy(
+//        noSearchQueryState = true,
+//        searchResults = emptyList(),
+//        noResultsState = false
+//    )
+    _state.value = state.value!!.updateToNoSearchQuery()
   }
 
   private fun updateAgeValue(age: String) {
