@@ -12,9 +12,11 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bignerdranch.android.petsaveapp.R
 import com.bignerdranch.android.petsaveapp.core.domain.model.NoMoreAnimalsException
+import com.bignerdranch.android.petsaveapp.core.presentation.AnimalClickListener
 import com.bignerdranch.android.petsaveapp.core.presentation.AnimalsAdapter
 import com.bignerdranch.android.petsaveapp.core.presentation.Event
 import com.bignerdranch.android.petsaveapp.databinding.FragmentSearchBinding
@@ -56,7 +58,14 @@ class SearchFragment: Fragment() {
   }
 
   private fun createAdapter(): AnimalsAdapter {
-    return AnimalsAdapter()
+    return AnimalsAdapter().apply {
+      setOnAnimalClickListener(object: AnimalClickListener {
+        override fun onClick(animalId: Long) {
+          val action = SearchFragmentDirections.actionSearchToAnimalDetailsFragment(animalId)
+          findNavController().navigate(action)
+        }
+      })
+    }
   }
 
   private fun setupRecyclerView(searchAdapter: AnimalsAdapter) {
