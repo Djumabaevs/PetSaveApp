@@ -12,4 +12,34 @@ data class SearchViewState(
     val searchingRemotely: Boolean = false,
     val noResultsState: Boolean = false,
     val failure: Event<Throwable>? = null
-)
+) {
+    fun updateToReadyForSearch(ages: List<String>, types: List<String>): SearchViewState {
+        return copy(
+            ageMenuValues = Event(ages),
+            typeMenuValues = Event(types)
+        )
+    }
+
+
+    fun updateToNoSearchQuery(): SearchViewState {
+        return copy(
+            noSearchQuery = true,
+            searchResults = emptyList(),
+            noRemoteResults = false
+        )
+    }
+
+    fun updateToSearching(): SearchViewState {
+        return copy(
+            noSearchQuery = false,
+            noRemoteResults = false
+        )
+    }
+
+    fun updateToSearchingRemotely(): SearchViewState {
+        return copy(
+            searchingRemotely = true,
+            searchResults = emptyList()
+        )
+    }
+}
