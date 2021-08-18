@@ -172,12 +172,14 @@ class SearchFragmentViewModel @ViewModelInject constructor(
   }
 
   private fun onAnimalList(animals: List<Animal>) {
-    _state.value = state.value!!.copy(
-        noSearchQueryState = false,
-        searchResults = animals.map { uiAnimalMapper.mapToView(it) },
-        searchingRemotely = false,
-        noResultsState = false
-    )
+//    _state.value = state.value!!.copy(
+//        noSearchQueryState = false,
+//        searchResults = animals.map { uiAnimalMapper.mapToView(it) },
+//        searchingRemotely = false,
+//        noResultsState = false
+//    )
+    _state.value =
+      state.value!!.updateToHasSearchResults(animals.map { uiAnimalMapper.mapToView(it) })
   }
 
   private fun onEmptyCacheResults(searchParameters: SearchParameters) {
