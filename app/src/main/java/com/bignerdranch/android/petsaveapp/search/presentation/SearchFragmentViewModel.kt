@@ -103,10 +103,11 @@ class SearchFragmentViewModel @ViewModelInject constructor(
   }
 
   private fun updateStateWithMenuValues(ages: List<String>, types: List<String>) {
-    _state.value = state.value!!.copy(
-        ageMenuValues = Event(ages),
-        typeMenuValues = Event(types)
-    )
+//    _state.value = state.value!!.copy(
+//        ageMenuValues = Event(ages),
+//        typeMenuValues = Event(types)
+//    )
+    _state.value = state.value!!.updateToReadyForSearch(ages, types)
   }
 
   private fun setupSearchSubscription() {
