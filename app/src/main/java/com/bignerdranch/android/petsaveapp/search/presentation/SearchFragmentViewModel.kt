@@ -64,6 +64,18 @@ class SearchFragmentViewModel @ViewModelInject constructor(
     }
   }
 
+  private fun onSearchParametersUpdate(event: SearchEvent) {
+    runningJobs.map { it.cancel() }
+
+    resetStateIfNoRemoteResults()
+
+    when (event) {
+      is SearchEvent.QueryInput -> updateQuery(event.input)
+      is SearchEvent.AgeValueSelected -> updateAgeValue(event.age)
+      is SearchEvent.TypeValueSelected -> updateTypeValue(event.type)
+    }
+  }
+
   private fun prepareForSearch() {
     loadMenuValues()
     setupSearchSubscription()
